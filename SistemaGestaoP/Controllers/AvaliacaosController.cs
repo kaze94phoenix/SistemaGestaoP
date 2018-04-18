@@ -117,9 +117,22 @@ namespace SistemaGestaoP.Controllers
             return View(avaliacao);
         }
 
-        public void gerarAvaliacao()
+        public void gerarAvaliacao(int idTrimestre, int idTipoAvaliacao, int disciplinaProf, int classeTurma, int anoLectivo)
         {
-            
+            //List<int> aAP = new List<int>();
+            foreach (Alocacao_Aluno_Professor a in db.Alocacao_Aluno_Professor)
+            {
+                if(a.disciplinaProfessorFK == disciplinaProf && a.classeTurmaFK==classeTurma && a.anoLectivo == anoLectivo)
+                {
+                    Avaliacao avali = new Avaliacao();
+                    avali.tipoAvaliacaoFK = idTipoAvaliacao;
+                    avali.trimestreFK = idTrimestre;
+                    avali.alocacaoAlunoProfessorFK = a.Alocacao_Aluno_Professor_id;
+                    db.Avaliacaos.Add(avali);
+                    
+                }
+            }
+            db.SaveChanges();
         }
         // POST: Avaliacaos/Delete/5
         [HttpPost, ActionName("Delete")]

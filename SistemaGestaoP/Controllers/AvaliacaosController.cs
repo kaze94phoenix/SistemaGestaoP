@@ -117,6 +117,10 @@ namespace SistemaGestaoP.Controllers
             return View(avaliacao);
         }
 
+        public void gerarAvaliacao()
+        {
+            
+        }
         // POST: Avaliacaos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

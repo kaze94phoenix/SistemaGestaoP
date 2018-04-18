@@ -1,0 +1,50 @@
+﻿@model SistemaGestaoP.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avaliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alocacao_Aluno_Professor.Alocacao_Aluno_Professor_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alocacao_Aluno_Professor.Alocacao_Aluno_Professor_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Avaliacao.TipoAvaliacao_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Avaliacao.TipoAvaliacao_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trimestre.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trimestre.designacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Avaliacao_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

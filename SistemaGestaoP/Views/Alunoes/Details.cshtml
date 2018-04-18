@@ -1,0 +1,66 @@
+﻿@model SistemaGestaoP.Models.Aluno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aluno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomepai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomepai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomemae)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomemae)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datanascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datanascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Utilizador.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utilizador.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Aluno_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

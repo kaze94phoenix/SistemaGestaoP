@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,20 +45,82 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -75,52 +138,15 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -133,33 +159,6 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Facebook">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -168,37 +167,412 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Alocacao_Aluno_ProfessorController.cs" />
+    <Compile Include="Controllers\Alocacao_Aluno_TurmaController.cs" />
+    <Compile Include="Controllers\Alocacao_Professor_TurmaController.cs" />
+    <Compile Include="Controllers\AlunoesController.cs" />
+    <Compile Include="Controllers\AvaliacaosController.cs" />
+    <Compile Include="Controllers\ClassesController.cs" />
+    <Compile Include="Controllers\Classe_TurmaController.cs" />
+    <Compile Include="Controllers\DisciplinasController.cs" />
+    <Compile Include="Controllers\Disciplina_ProfessorController.cs" />
+    <Compile Include="Controllers\EnderecoesController.cs" />
+    <Compile Include="Controllers\GeneroesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PapelsController.cs" />
+    <Compile Include="Controllers\ProfessorsController.cs" />
+    <Compile Include="Controllers\SeccaosController.cs" />
+    <Compile Include="Controllers\Tipo_AvaliacaoController.cs" />
+    <Compile Include="Controllers\TrimestresController.cs" />
+    <Compile Include="Controllers\TurmasController.cs" />
+    <Compile Include="Controllers\TurnoesController.cs" />
+    <Compile Include="Controllers\UtilizadorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Alocacao_Aluno_Professor.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alocacao_Aluno_Turma.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alocacao_Professor_Turma.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Aluno.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Avaliacao.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Classe.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Classe_Turma.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplina.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplina_Professor.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Endereco.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genero.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelSGP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSGP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSGP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSGP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSGP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Papel.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Professor.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seccao.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tipo_Avaliacao.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trimestre.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Turma.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Turno.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utilizador.cs">
+      <DependentUpon>ModelSGP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\aero.css" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\blue.css" />
+    <Content Include="Content\bootstrap-colorpicker.css" />
+    <Content Include="Content\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-timepicker.css" />
+    <Content Include="Content\bootstrap-timepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap3-wysihtml5.css" />
+    <Content Include="Content\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\dataTables.bootstrap.css" />
+    <Content Include="Content\datepicker3.css" />
+    <Content Include="Content\daterangepicker-bs3.css" />
+    <Content Include="Content\easypiechart.css" />
+    <Content Include="Content\flat.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\futurico.css" />
+    <Content Include="Content\gmap.css" />
+    <Content Include="Content\green.css" />
+    <Content Include="Content\grey.css" />
+    <Content Include="Content\ion.rangeSlider.css" />
+    <Content Include="Content\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Content\ion.rangeSlider.skinNice.css" />
+    <Content Include="Content\ionicons.css" />
+    <Content Include="Content\ionicons.min.css" />
+    <Content Include="Content\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery.ui.plupload.css" />
+    <Content Include="Content\line.css" />
+    <Content Include="Content\liststyle.txt" />
+    <Content Include="Content\minimal.css" />
+    <Content Include="Content\morris.css" />
+    <Content Include="Content\multi-select.css" />
+    <Content Include="Content\orange.css" />
+    <Content Include="Content\pink.css" />
+    <Content Include="Content\polaris.css" />
+    <Content Include="Content\purple.css" />
+    <Content Include="Content\red.css" />
+    <Content Include="Content\slider.css" />
+    <Content Include="Content\square.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\yellow.css" />
+    <Content Include="Content\_all.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ModelSGP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSGP.edmx</DependentUpon>
+      <LastGenOutput>ModelSGP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelSGP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSGP.edmx</DependentUpon>
+      <LastGenOutput>ModelSGP.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\a11yhelp.js" />
+    <Content Include="Scripts\about.js" />
+    <Content Include="Scripts\af.js" />
+    <Content Include="Scripts\anchor.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\ar.js" />
+    <Content Include="Scripts\bg.js" />
+    <Content Include="Scripts\bn.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ar.js" />
+    <Content Include="Scripts\bootstrap-datepicker.az.js" />
+    <Content Include="Scripts\bootstrap-datepicker.bg.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ca.js" />
+    <Content Include="Scripts\bootstrap-datepicker.cs.js" />
+    <Content Include="Scripts\bootstrap-datepicker.cy.js" />
+    <Content Include="Scripts\bootstrap-datepicker.da.js" />
+    <Content Include="Scripts\bootstrap-datepicker.de.js" />
+    <Content Include="Scripts\bootstrap-datepicker.el.js" />
+    <Content Include="Scripts\bootstrap-datepicker.es.js" />
+    <Content Include="Scripts\bootstrap-datepicker.et.js" />
+    <Content Include="Scripts\bootstrap-datepicker.fa.js" />
+    <Content Include="Scripts\bootstrap-datepicker.fi.js" />
+    <Content Include="Scripts\bootstrap-datepicker.fr.js" />
+    <Content Include="Scripts\bootstrap-datepicker.gl.js" />
+    <Content Include="Scripts\bootstrap-datepicker.he.js" />
+    <Content Include="Scripts\bootstrap-datepicker.hr.js" />
+    <Content Include="Scripts\bootstrap-datepicker.hu.js" />
+    <Content Include="Scripts\bootstrap-datepicker.id.js" />
+    <Content Include="Scripts\bootstrap-datepicker.is.js" />
+    <Content Include="Scripts\bootstrap-datepicker.it.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ja.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ka.js" />
+    <Content Include="Scripts\bootstrap-datepicker.kk.js" />
+    <Content Include="Scripts\bootstrap-datepicker.kr.js" />
+    <Content Include="Scripts\bootstrap-datepicker.lt.js" />
+    <Content Include="Scripts\bootstrap-datepicker.lv.js" />
+    <Content Include="Scripts\bootstrap-datepicker.mk.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ms.js" />
+    <Content Include="Scripts\bootstrap-datepicker.nb.js" />
+    <Content Include="Scripts\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Scripts\bootstrap-datepicker.nl.js" />
+    <Content Include="Scripts\bootstrap-datepicker.no.js" />
+    <Content Include="Scripts\bootstrap-datepicker.pl.js" />
+    <Content Include="Scripts\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Scripts\bootstrap-datepicker.pt.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ro.js" />
+    <Content Include="Scripts\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Scripts\bootstrap-datepicker.rs.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ru.js" />
+    <Content Include="Scripts\bootstrap-datepicker.sk.js" />
+    <Content Include="Scripts\bootstrap-datepicker.sl.js" />
+    <Content Include="Scripts\bootstrap-datepicker.sq.js" />
+    <Content Include="Scripts\bootstrap-datepicker.sv.js" />
+    <Content Include="Scripts\bootstrap-datepicker.sw.js" />
+    <Content Include="Scripts\bootstrap-datepicker.th.js" />
+    <Content Include="Scripts\bootstrap-datepicker.tr.js" />
+    <Content Include="Scripts\bootstrap-datepicker.ua.js" />
+    <Content Include="Scripts\bootstrap-datepicker.vi.js" />
+    <Content Include="Scripts\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Scripts\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-slider.js" />
+    <Content Include="Scripts\bootstrap-timepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ModelSGP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSGP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelSGP.edmx.diagram">
+      <DependentUpon>ModelSGP.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="Scripts\bootstrap3-wysihtml5.js" />
+    <Content Include="Scripts\bs.js" />
+    <Content Include="Scripts\build-config.js" />
+    <Content Include="Scripts\ca.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\ckeditor.js" />
+    <Content Include="Scripts\config.js" />
+    <Content Include="Scripts\cs.js" />
+    <Content Include="Scripts\cy.js" />
+    <Content Include="Scripts\da.js" />
+    <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
+    <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\de.js" />
+    <Content Include="Scripts\default.js" />
+    <Content Include="Scripts\demo.js" />
+    <Content Include="Scripts\dialogDefinition.js" />
+    <Content Include="Scripts\el.js" />
+    <Content Include="Scripts\en-au.js" />
+    <Content Include="Scripts\en-ca.js" />
+    <Content Include="Scripts\en-gb.js" />
+    <Content Include="Scripts\en.js" />
+    <Content Include="Scripts\eo.js" />
+    <Content Include="Scripts\es.js" />
+    <Content Include="Scripts\et.js" />
+    <Content Include="Scripts\eu.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\fa.js" />
+    <Content Include="Scripts\fi.js" />
+    <Content Include="Scripts\fo.js" />
+    <Content Include="Scripts\fr-ca.js" />
+    <Content Include="Scripts\fr.js" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\gl.js" />
+    <Content Include="Scripts\gmaps-scripts.js" />
+    <Content Include="Scripts\gmaps.js" />
+    <Content Include="Scripts\gu.js" />
+    <Content Include="Scripts\he.js" />
+    <Content Include="Scripts\hi.js" />
+    <Content Include="Scripts\hr.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\hu.js" />
+    <Content Include="Scripts\icheck.js" />
+    <Content Include="Scripts\icheck.min.js" />
+    <Content Include="Scripts\id.js" />
+    <Content Include="Scripts\image.js" />
+    <Content Include="Scripts\is.js" />
+    <Content Include="Scripts\it.js" />
+    <Content Include="Scripts\ja.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.ba-resize.min.js" />
+    <Content Include="Scripts\jquery.colorhelpers.js" />
+    <Content Include="Scripts\jquery.colorhelpers.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.flot.canvas.js" />
+    <Content Include="Scripts\jquery.flot.canvas.min.js" />
+    <Content Include="Scripts\jquery.flot.categories.js" />
+    <Content Include="Scripts\jquery.flot.categories.min.js" />
+    <Content Include="Scripts\jquery.flot.crosshair.js" />
+    <Content Include="Scripts\jquery.flot.crosshair.min.js" />
+    <Content Include="Scripts\jquery.flot.errorbars.js" />
+    <Content Include="Scripts\jquery.flot.errorbars.min.js" />
+    <Content Include="Scripts\jquery.flot.fillbetween.js" />
+    <Content Include="Scripts\jquery.flot.fillbetween.min.js" />
+    <Content Include="Scripts\jquery.flot.image.js" />
+    <Content Include="Scripts\jquery.flot.image.min.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.min.js" />
+    <Content Include="Scripts\jquery.flot.navigate.js" />
+    <Content Include="Scripts\jquery.flot.navigate.min.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\jquery.flot.resize.js" />
+    <Content Include="Scripts\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\jquery.flot.selection.js" />
+    <Content Include="Scripts\jquery.flot.selection.min.js" />
+    <Content Include="Scripts\jquery.flot.stack.js" />
+    <Content Include="Scripts\jquery.flot.stack.min.js" />
+    <Content Include="Scripts\jquery.flot.symbol.js" />
+    <Content Include="Scripts\jquery.flot.symbol.min.js" />
+    <Content Include="Scripts\jquery.flot.threshold.js" />
+    <Content Include="Scripts\jquery.flot.threshold.min.js" />
+    <Content Include="Scripts\jquery.flot.time.js" />
+    <Content Include="Scripts\jquery.flot.time.min.js" />
+    <Content Include="Scripts\jquery.inputmask.date.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask.js" />
+    <Content Include="Scripts\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.multi-select.js" />
+    <Content Include="Scripts\jquery.nestable.js" />
+    <Content Include="Scripts\jquery.placeholder.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ka.js" />
+    <Content Include="Scripts\km.js" />
+    <Content Include="Scripts\ko.js" />
+    <Content Include="Scripts\ku.js" />
+    <Content Include="Scripts\link.js" />
+    <Content Include="Scripts\listjs - Copy.txt" />
+    <Content Include="Scripts\listjs.txt" />
+    <Content Include="Scripts\lt.js" />
+    <Content Include="Scripts\lv.js" />
+    <Content Include="Scripts\mk.js" />
+    <Content Include="Scripts\mn.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\modernizr.min.js" />
+    <Content Include="Scripts\ms.js" />
+    <Content Include="Scripts\nb.js" />
+    <Content Include="Scripts\nestable.js" />
+    <Content Include="Scripts\nl.js" />
+    <Content Include="Scripts\no.js" />
+    <Content Include="Scripts\options.js" />
+    <Content Include="Scripts\paste.js" />
+    <Content Include="Scripts\pl.js" />
+    <Content Include="Scripts\pt-br.js" />
+    <Content Include="Scripts\pt.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ro.js" />
+    <Content Include="Scripts\ru.js" />
+    <Content Include="Scripts\si.js" />
+    <Content Include="Scripts\sk.js" />
+    <Content Include="Scripts\sl.js" />
+    <Content Include="Scripts\specialchar.js" />
+    <Content Include="Scripts\sq.js" />
+    <Content Include="Scripts\sr-latn.js" />
+    <Content Include="Scripts\sr.js" />
+    <Content Include="Scripts\styles.js" />
+    <Content Include="Scripts\sv.js" />
+    <Content Include="Scripts\table.js" />
+    <Content Include="Scripts\tableCell.js" />
+    <Content Include="Scripts\th.js" />
+    <Content Include="Scripts\tr.js" />
+    <Content Include="Scripts\ug.js" />
+    <Content Include="Scripts\uk.js" />
+    <Content Include="Scripts\vi.js" />
+    <Content Include="Scripts\wsc.js" />
+    <Content Include="Scripts\wsc_ie.js" />
+    <Content Include="Scripts\zh-cn.js" />
+    <Content Include="Scripts\zh.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -234,17 +608,117 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Professor\Create.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Professor\Delete.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Professor\Details.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Professor\Edit.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Professor\Index.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Turma\Create.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Turma\Delete.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Turma\Details.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Turma\Edit.cshtml" />
+    <Content Include="Views\Alocacao_Aluno_Turma\Index.cshtml" />
+    <Content Include="Views\Alocacao_Professor_Turma\Create.cshtml" />
+    <Content Include="Views\Alocacao_Professor_Turma\Delete.cshtml" />
+    <Content Include="Views\Alocacao_Professor_Turma\Details.cshtml" />
+    <Content Include="Views\Alocacao_Professor_Turma\Edit.cshtml" />
+    <Content Include="Views\Alocacao_Professor_Turma\Index.cshtml" />
+    <Content Include="Views\Alunoes\Create.cshtml" />
+    <Content Include="Views\Alunoes\Delete.cshtml" />
+    <Content Include="Views\Alunoes\Details.cshtml" />
+    <Content Include="Views\Alunoes\Edit.cshtml" />
+    <Content Include="Views\Alunoes\Index.cshtml" />
+    <Content Include="Views\Avaliacaos\Create.cshtml" />
+    <Content Include="Views\Avaliacaos\Delete.cshtml" />
+    <Content Include="Views\Avaliacaos\Details.cshtml" />
+    <Content Include="Views\Avaliacaos\Edit.cshtml" />
+    <Content Include="Views\Avaliacaos\Index.cshtml" />
+    <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Classes\Delete.cshtml" />
+    <Content Include="Views\Classes\Details.cshtml" />
+    <Content Include="Views\Classes\Edit.cshtml" />
+    <Content Include="Views\Classes\Index.cshtml" />
+    <Content Include="Views\Classe_Turma\Create.cshtml" />
+    <Content Include="Views\Classe_Turma\Delete.cshtml" />
+    <Content Include="Views\Classe_Turma\Details.cshtml" />
+    <Content Include="Views\Classe_Turma\Edit.cshtml" />
+    <Content Include="Views\Classe_Turma\Index.cshtml" />
+    <Content Include="Views\Disciplinas\Create.cshtml" />
+    <Content Include="Views\Disciplinas\Delete.cshtml" />
+    <Content Include="Views\Disciplinas\Details.cshtml" />
+    <Content Include="Views\Disciplinas\Edit.cshtml" />
+    <Content Include="Views\Disciplinas\Index.cshtml" />
+    <Content Include="Views\Disciplina_Professor\Create.cshtml" />
+    <Content Include="Views\Disciplina_Professor\Delete.cshtml" />
+    <Content Include="Views\Disciplina_Professor\Details.cshtml" />
+    <Content Include="Views\Disciplina_Professor\Edit.cshtml" />
+    <Content Include="Views\Disciplina_Professor\Index.cshtml" />
+    <Content Include="Views\Enderecoes\Create.cshtml" />
+    <Content Include="Views\Enderecoes\Delete.cshtml" />
+    <Content Include="Views\Enderecoes\Details.cshtml" />
+    <Content Include="Views\Enderecoes\Edit.cshtml" />
+    <Content Include="Views\Enderecoes\Index.cshtml" />
+    <Content Include="Views\Generoes\Create.cshtml" />
+    <Content Include="Views\Generoes\Delete.cshtml" />
+    <Content Include="Views\Generoes\Details.cshtml" />
+    <Content Include="Views\Generoes\Edit.cshtml" />
+    <Content Include="Views\Generoes\Index.cshtml" />
+    <Content Include="Views\Papels\Create.cshtml" />
+    <Content Include="Views\Papels\Delete.cshtml" />
+    <Content Include="Views\Papels\Details.cshtml" />
+    <Content Include="Views\Papels\Edit.cshtml" />
+    <Content Include="Views\Papels\Index.cshtml" />
+    <Content Include="Views\Professors\Create.cshtml" />
+    <Content Include="Views\Professors\Delete.cshtml" />
+    <Content Include="Views\Professors\Details.cshtml" />
+    <Content Include="Views\Professors\Edit.cshtml" />
+    <Content Include="Views\Professors\Index.cshtml" />
+    <Content Include="Views\Seccaos\Create.cshtml" />
+    <Content Include="Views\Seccaos\Delete.cshtml" />
+    <Content Include="Views\Seccaos\Details.cshtml" />
+    <Content Include="Views\Seccaos\Edit.cshtml" />
+    <Content Include="Views\Seccaos\Index.cshtml" />
+    <Content Include="Views\Tipo_Avaliacao\Create.cshtml" />
+    <Content Include="Views\Tipo_Avaliacao\Delete.cshtml" />
+    <Content Include="Views\Tipo_Avaliacao\Details.cshtml" />
+    <Content Include="Views\Tipo_Avaliacao\Edit.cshtml" />
+    <Content Include="Views\Tipo_Avaliacao\Index.cshtml" />
+    <Content Include="Views\Trimestres\Create.cshtml" />
+    <Content Include="Views\Trimestres\Delete.cshtml" />
+    <Content Include="Views\Trimestres\Details.cshtml" />
+    <Content Include="Views\Trimestres\Edit.cshtml" />
+    <Content Include="Views\Trimestres\Index.cshtml" />
+    <Content Include="Views\Turmas\Create.cshtml" />
+    <Content Include="Views\Turmas\Delete.cshtml" />
+    <Content Include="Views\Turmas\Details.cshtml" />
+    <Content Include="Views\Turmas\Edit.cshtml" />
+    <Content Include="Views\Turmas\Index.cshtml" />
+    <Content Include="Views\Turnoes\Create.cshtml" />
+    <Content Include="Views\Turnoes\Delete.cshtml" />
+    <Content Include="Views\Turnoes\Details.cshtml" />
+    <Content Include="Views\Turnoes\Edit.cshtml" />
+    <Content Include="Views\Turnoes\Index.cshtml" />
+    <Content Include="Views\Utilizadors\Create.cshtml" />
+    <Content Include="Views\Utilizadors\Delete.cshtml" />
+    <Content Include="Views\Utilizadors\Details.cshtml" />
+    <Content Include="Views\Utilizadors\Edit.cshtml" />
+    <Content Include="Views\Utilizadors\Index.cshtml" />
+    <Content Include="Scripts\phone-be.json" />
+    <Content Include="Scripts\phone-codes.json" />
+    <Content Include="Scripts\slimScroll.jquery.json" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -278,8 +752,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

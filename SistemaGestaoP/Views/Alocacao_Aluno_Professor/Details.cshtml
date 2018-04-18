@@ -1,0 +1,50 @@
+﻿@model SistemaGestaoP.Models.Alocacao_Aluno_Professor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alocacao_Aluno_Professor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.anoLectivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anoLectivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aluno.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aluno.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe_Turma.ClasseTurma_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe_Turma.ClasseTurma_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disciplina_Professor.DisciplinaProfessor_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disciplina_Professor.DisciplinaProfessor_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Alocacao_Aluno_Professor_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

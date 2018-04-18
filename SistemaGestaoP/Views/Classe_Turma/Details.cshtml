@@ -1,0 +1,50 @@
+﻿@model SistemaGestaoP.Models.Classe_Turma
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Classe_Turma</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe.designacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seccao.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seccao.designacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Turma.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Turma.designacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Turno.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Turno.designacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClasseTurma_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

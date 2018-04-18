@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SGPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alocacao_Aluno_Professor">
+          <Key>
+            <PropertyRef Name="Alocacao_Aluno_Professor-id" />
+          </Key>
+          <Property Name="Alocacao_Aluno_Professor-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alunoFK" Type="int" />
+          <Property Name="disciplinaProfessorFK" Type="int" />
+          <Property Name="classeTurmaFK" Type="int" />
+          <Property Name="anoLectivo" Type="int" />
+        </EntityType>
+        <EntityType Name="Alocacao_Aluno_Turma">
+          <Key>
+            <PropertyRef Name="AlocacaoAlunoTurma-id" />
+          </Key>
+          <Property Name="AlocacaoAlunoTurma-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alunoFK" Type="int" />
+          <Property Name="classeTurmaFK" Type="int" />
+          <Property Name="anoLectivo" Type="int" />
+        </EntityType>
+        <EntityType Name="Alocacao_Professor_Turma">
+          <Key>
+            <PropertyRef Name="AlocacaoProfessorTurma-id" />
+          </Key>
+          <Property Name="AlocacaoProfessorTurma-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="displinaProfessorFK" Type="int" />
+          <Property Name="classeTurmaFK" Type="int" />
+          <Property Name="anoLectivo" Type="int" />
+        </EntityType>
+        <EntityType Name="Aluno">
+          <Key>
+            <PropertyRef Name="Aluno-id" />
+          </Key>
+          <Property Name="Aluno-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="nomepai" Type="varchar" MaxLength="50" />
+          <Property Name="nomemae" Type="varchar" MaxLength="50" />
+          <Property Name="bi" Type="varchar" MaxLength="50" />
+          <Property Name="datanascimento" Type="date" />
+          <Property Name="utilizadorFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Avaliacao">
+          <Key>
+            <PropertyRef Name="Avaliacao-id" />
+          </Key>
+          <Property Name="Avaliacao-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoAvaliacaoFK" Type="int" />
+          <Property Name="trimestreFK" Type="int" />
+          <Property Name="alocacaoAlunoProfessorFK" Type="int" />
+          <Property Name="nota" Type="real" />
+        </EntityType>
+        <EntityType Name="Classe">
+          <Key>
+            <PropertyRef Name="Classe-id" />
+          </Key>
+          <Property Name="Classe-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Classe_Turma">
+          <Key>
+            <PropertyRef Name="ClasseTurma-id" />
+          </Key>
+          <Property Name="ClasseTurma-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classeFK" Type="int" />
+          <Property Name="turmaFK" Type="int" />
+          <Property Name="turnoFK" Type="int" />
+          <Property Name="seccaoFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Disciplina">
+          <Key>
+            <PropertyRef Name="Disciplina-id" />
+          </Key>
+          <Property Name="Disciplina-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Disciplina_Professor">
+          <Key>
+            <PropertyRef Name="DisciplinaProfessor-id" />
+          </Key>
+          <Property Name="DisciplinaProfessor-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="disciplinaFK" Type="int" />
+          <Property Name="professorFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="Endereco-id" />
+          </Key>
+          <Property Name="Endereco-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rua" Type="varchar" MaxLength="50" />
+          <Property Name="numero" Type="int" />
+          <Property Name="bairro" Type="varchar" MaxLength="50" />
+          <Property Name="piso" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Genero-id" />
+          </Key>
+          <Property Name="Genero-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Papel">
+          <Key>
+            <PropertyRef Name="Papel-id" />
+          </Key>
+          <Property Name="Papel-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="Professor-id" />
+          </Key>
+          <Property Name="Professor-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="bi" Type="varchar" MaxLength="50" />
+          <Property Name="utilizadorFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Seccao">
+          <Key>
+            <PropertyRef Name="Seccao-id" />
+          </Key>
+          <Property Name="Seccao-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tipo_Avaliacao">
+          <Key>
+            <PropertyRef Name="TipoAvaliacao-id" />
+          </Key>
+          <Property Name="TipoAvaliacao-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Trimestre">
+          <Key>
+            <PropertyRef Name="Trimestre-id" />
+          </Key>
+          <Property Name="Trimestre-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Turma">
+          <Key>
+            <PropertyRef Name="Turma-id" />
+          </Key>
+          <Property Name="Turma-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="Turno-id" />
+          </Key>
+          <Property Name="Turno-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="Utilizador-id" />
+          </Key>
+          <Property Name="Utilizador-id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="palavra-passe" Type="varchar" MaxLength="200" />
+          <Property Name="nomeUtilizador" Type="varchar" MaxLength="50" />
+          <Property Name="enderecoFK" Type="int" />
+          <Property Name="generoFK" Type="int" />
+          <Property Name="celular" Type="int" />
+          <Property Name="papelFK" Type="int" />
+        </EntityType>
+        <Association Name="FK_Alocacao_Aluno_Professor_Aluno">
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluno">
+              <PropertyRef Name="Aluno-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="alunoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Professor_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Professor_Disciplina_Professor">
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina_Professor">
+              <PropertyRef Name="DisciplinaProfessor-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="disciplinaProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Turma_Aluno">
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Turma" Type="Self.Alocacao_Aluno_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluno">
+              <PropertyRef Name="Aluno-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Turma">
+              <PropertyRef Name="alunoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Turma_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Turma" Type="Self.Alocacao_Aluno_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Turma">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Professor_Turma_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Professor_Turma" Type="Self.Alocacao_Professor_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Professor_Turma">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Professor_Turma_Disciplina_Professor">
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="0..1" />
+          <End Role="Alocacao_Professor_Turma" Type="Self.Alocacao_Professor_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina_Professor">
+              <PropertyRef Name="DisciplinaProfessor-id" />
+            </Principal>
+            <Dependent Role="Alocacao_Professor_Turma">
+              <PropertyRef Name="displinaProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aluno_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="0..1" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="Utilizador-id" />
+            </Principal>
+            <Dependent Role="Aluno">
+              <PropertyRef Name="utilizadorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Alocacao_Aluno_Professor">
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="Alocacao_Aluno_Professor-id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="alocacaoAlunoProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Tipo_Avaliacao">
+          <End Role="Tipo_Avaliacao" Type="Self.Tipo_Avaliacao" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Avaliacao">
+              <PropertyRef Name="TipoAvaliacao-id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="tipoAvaliacaoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Trimestre">
+          <End Role="Trimestre" Type="Self.Trimestre" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trimestre">
+              <PropertyRef Name="Trimestre-id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="trimestreFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Classe">
+          <End Role="Classe" Type="Self.Classe" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe">
+              <PropertyRef Name="Classe-id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="classeFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Seccao">
+          <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seccao">
+              <PropertyRef Name="Seccao-id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="seccaoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Turma">
+          <End Role="Turma" Type="Self.Turma" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turma">
+              <PropertyRef Name="Turma-id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="turmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Turno">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Turno-id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="turnoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplina_Professor_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="Disciplina-id" />
+            </Principal>
+            <Dependent Role="Disciplina_Professor">
+              <PropertyRef Name="disciplinaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplina_Professor_Professor">
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="Professor-id" />
+            </Principal>
+            <Dependent Role="Disciplina_Professor">
+              <PropertyRef Name="professorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Professor_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="0..1" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="Utilizador-id" />
+            </Principal>
+            <Dependent Role="Professor">
+              <PropertyRef Name="utilizadorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Endereco">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Endereco-id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="enderecoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Genero-id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="generoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Papel">
+          <End Role="Papel" Type="Self.Papel" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papel">
+              <PropertyRef Name="Papel-id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="papelFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SGPModelStoreContainer">
+          <EntitySet Name="Alocacao_Aluno_Professor" EntityType="Self.Alocacao_Aluno_Professor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alocacao_Aluno_Turma" EntityType="Self.Alocacao_Aluno_Turma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alocacao_Professor_Turma" EntityType="Self.Alocacao_Professor_Turma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aluno" EntityType="Self.Aluno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avaliacao" EntityType="Self.Avaliacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classe_Turma" EntityType="Self.Classe_Turma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplina_Professor" EntityType="Self.Disciplina_Professor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Papel" EntityType="Self.Papel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seccao" EntityType="Self.Seccao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Avaliacao" EntityType="Self.Tipo_Avaliacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trimestre" EntityType="Self.Trimestre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turma" EntityType="Self.Turma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turno" EntityType="Self.Turno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizador" EntityType="Self.Utilizador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Aluno" Association="Self.FK_Alocacao_Aluno_Professor_Aluno">
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Classe_Turma" Association="Self.FK_Alocacao_Aluno_Professor_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Disciplina_Professor" Association="Self.FK_Alocacao_Aluno_Professor_Disciplina_Professor">
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Turma_Aluno" Association="Self.FK_Alocacao_Aluno_Turma_Aluno">
+            <End Role="Aluno" EntitySet="Aluno" />
+            <End Role="Alocacao_Aluno_Turma" EntitySet="Alocacao_Aluno_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Turma_Classe_Turma" Association="Self.FK_Alocacao_Aluno_Turma_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Aluno_Turma" EntitySet="Alocacao_Aluno_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Professor_Turma_Classe_Turma" Association="Self.FK_Alocacao_Professor_Turma_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Professor_Turma" EntitySet="Alocacao_Professor_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Professor_Turma_Disciplina_Professor" Association="Self.FK_Alocacao_Professor_Turma_Disciplina_Professor">
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+            <End Role="Alocacao_Professor_Turma" EntitySet="Alocacao_Professor_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aluno_Utilizador" Association="Self.FK_Aluno_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="Aluno" EntitySet="Aluno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Alocacao_Aluno_Professor" Association="Self.FK_Avaliacao_Alocacao_Aluno_Professor">
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+            <End Role="Avaliacao" EntitySet="Avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Tipo_Avaliacao" Association="Self.FK_Avaliacao_Tipo_Avaliacao">
+            <End Role="Tipo_Avaliacao" EntitySet="Tipo_Avaliacao" />
+            <End Role="Avaliacao" EntitySet="Avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Trimestre" Association="Self.FK_Avaliacao_Trimestre">
+            <End Role="Trimestre" EntitySet="Trimestre" />
+            <End Role="Avaliacao" EntitySet="Avaliacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Classe" Association="Self.FK_Classe_Turma_Classe">
+            <End Role="Classe" EntitySet="Classe" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Seccao" Association="Self.FK_Classe_Turma_Seccao">
+            <End Role="Seccao" EntitySet="Seccao" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Turma" Association="Self.FK_Classe_Turma_Turma">
+            <End Role="Turma" EntitySet="Turma" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Turno" Association="Self.FK_Classe_Turma_Turno">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplina_Professor_Disciplina" Association="Self.FK_Disciplina_Professor_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplina_Professor_Professor" Association="Self.FK_Disciplina_Professor_Professor">
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Professor_Utilizador" Association="Self.FK_Professor_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="Professor" EntitySet="Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Endereco" Association="Self.FK_Utilizador_Endereco">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Utilizador" EntitySet="Utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Genero" Association="Self.FK_Utilizador_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Utilizador" EntitySet="Utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Papel" Association="Self.FK_Utilizador_Papel">
+            <End Role="Papel" EntitySet="Papel" />
+            <End Role="Utilizador" EntitySet="Utilizador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SGPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alocacao_Aluno_Professor">
+          <Key>
+            <PropertyRef Name="Alocacao_Aluno_Professor_id" />
+          </Key>
+          <Property Name="Alocacao_Aluno_Professor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alunoFK" Type="Int32" />
+          <Property Name="disciplinaProfessorFK" Type="Int32" />
+          <Property Name="classeTurmaFK" Type="Int32" />
+          <Property Name="anoLectivo" Type="Int32" />
+          <NavigationProperty Name="Aluno" Relationship="Self.FK_Alocacao_Aluno_Professor_Aluno" FromRole="Alocacao_Aluno_Professor" ToRole="Aluno" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Alocacao_Aluno_Professor_Classe_Turma" FromRole="Alocacao_Aluno_Professor" ToRole="Classe_Turma" />
+          <NavigationProperty Name="Disciplina_Professor" Relationship="Self.FK_Alocacao_Aluno_Professor_Disciplina_Professor" FromRole="Alocacao_Aluno_Professor" ToRole="Disciplina_Professor" />
+          <NavigationProperty Name="Avaliacaos" Relationship="Self.FK_Avaliacao_Alocacao_Aluno_Professor" FromRole="Alocacao_Aluno_Professor" ToRole="Avaliacao" />
+        </EntityType>
+        <EntityType Name="Alocacao_Aluno_Turma">
+          <Key>
+            <PropertyRef Name="AlocacaoAlunoTurma_id" />
+          </Key>
+          <Property Name="AlocacaoAlunoTurma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alunoFK" Type="Int32" />
+          <Property Name="classeTurmaFK" Type="Int32" />
+          <Property Name="anoLectivo" Type="Int32" />
+          <NavigationProperty Name="Aluno" Relationship="Self.FK_Alocacao_Aluno_Turma_Aluno" FromRole="Alocacao_Aluno_Turma" ToRole="Aluno" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Alocacao_Aluno_Turma_Classe_Turma" FromRole="Alocacao_Aluno_Turma" ToRole="Classe_Turma" />
+        </EntityType>
+        <EntityType Name="Alocacao_Professor_Turma">
+          <Key>
+            <PropertyRef Name="AlocacaoProfessorTurma_id" />
+          </Key>
+          <Property Name="AlocacaoProfessorTurma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="displinaProfessorFK" Type="Int32" />
+          <Property Name="classeTurmaFK" Type="Int32" />
+          <Property Name="anoLectivo" Type="Int32" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Alocacao_Professor_Turma_Classe_Turma" FromRole="Alocacao_Professor_Turma" ToRole="Classe_Turma" />
+          <NavigationProperty Name="Disciplina_Professor" Relationship="Self.FK_Alocacao_Professor_Turma_Disciplina_Professor" FromRole="Alocacao_Professor_Turma" ToRole="Disciplina_Professor" />
+        </EntityType>
+        <EntityType Name="Aluno">
+          <Key>
+            <PropertyRef Name="Aluno_id" />
+          </Key>
+          <Property Name="Aluno_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nomepai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nomemae" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="datanascimento" Type="DateTime" Precision="0" />
+          <Property Name="utilizadorFK" Type="Int32" />
+          <NavigationProperty Name="Alocacao_Aluno_Professor" Relationship="Self.FK_Alocacao_Aluno_Professor_Aluno" FromRole="Aluno" ToRole="Alocacao_Aluno_Professor" />
+          <NavigationProperty Name="Alocacao_Aluno_Turma" Relationship="Self.FK_Alocacao_Aluno_Turma_Aluno" FromRole="Aluno" ToRole="Alocacao_Aluno_Turma" />
+          <NavigationProperty Name="Utilizador" Relationship="Self.FK_Aluno_Utilizador" FromRole="Aluno" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Avaliacao">
+          <Key>
+            <PropertyRef Name="Avaliacao_id" />
+          </Key>
+          <Property Name="Avaliacao_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoAvaliacaoFK" Type="Int32" />
+          <Property Name="trimestreFK" Type="Int32" />
+          <Property Name="alocacaoAlunoProfessorFK" Type="Int32" />
+          <Property Name="nota" Type="Single" />
+          <NavigationProperty Name="Alocacao_Aluno_Professor" Relationship="Self.FK_Avaliacao_Alocacao_Aluno_Professor" FromRole="Avaliacao" ToRole="Alocacao_Aluno_Professor" />
+          <NavigationProperty Name="Tipo_Avaliacao" Relationship="Self.FK_Avaliacao_Tipo_Avaliacao" FromRole="Avaliacao" ToRole="Tipo_Avaliacao" />
+          <NavigationProperty Name="Trimestre" Relationship="Self.FK_Avaliacao_Trimestre" FromRole="Avaliacao" ToRole="Trimestre" />
+        </EntityType>
+        <EntityType Name="Classe">
+          <Key>
+            <PropertyRef Name="Classe_id" />
+          </Key>
+          <Property Name="Classe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Classe_Turma_Classe" FromRole="Classe" ToRole="Classe_Turma" />
+        </EntityType>
+        <EntityType Name="Classe_Turma">
+          <Key>
+            <PropertyRef Name="ClasseTurma_id" />
+          </Key>
+          <Property Name="ClasseTurma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classeFK" Type="Int32" />
+          <Property Name="turmaFK" Type="Int32" />
+          <Property Name="turnoFK" Type="Int32" />
+          <Property Name="seccaoFK" Type="Int32" />
+          <NavigationProperty Name="Alocacao_Aluno_Professor" Relationship="Self.FK_Alocacao_Aluno_Professor_Classe_Turma" FromRole="Classe_Turma" ToRole="Alocacao_Aluno_Professor" />
+          <NavigationProperty Name="Alocacao_Aluno_Turma" Relationship="Self.FK_Alocacao_Aluno_Turma_Classe_Turma" FromRole="Classe_Turma" ToRole="Alocacao_Aluno_Turma" />
+          <NavigationProperty Name="Alocacao_Professor_Turma" Relationship="Self.FK_Alocacao_Professor_Turma_Classe_Turma" FromRole="Classe_Turma" ToRole="Alocacao_Professor_Turma" />
+          <NavigationProperty Name="Classe" Relationship="Self.FK_Classe_Turma_Classe" FromRole="Classe_Turma" ToRole="Classe" />
+          <NavigationProperty Name="Seccao" Relationship="Self.FK_Classe_Turma_Seccao" FromRole="Classe_Turma" ToRole="Seccao" />
+          <NavigationProperty Name="Turma" Relationship="Self.FK_Classe_Turma_Turma" FromRole="Classe_Turma" ToRole="Turma" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK_Classe_Turma_Turno" FromRole="Classe_Turma" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="Disciplina">
+          <Key>
+            <PropertyRef Name="Disciplina_id" />
+          </Key>
+          <Property Name="Disciplina_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disciplina_Professor" Relationship="Self.FK_Disciplina_Professor_Disciplina" FromRole="Disciplina" ToRole="Disciplina_Professor" />
+        </EntityType>
+        <EntityType Name="Disciplina_Professor">
+          <Key>
+            <PropertyRef Name="DisciplinaProfessor_id" />
+          </Key>
+          <Property Name="DisciplinaProfessor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="disciplinaFK" Type="Int32" />
+          <Property Name="professorFK" Type="Int32" />
+          <NavigationProperty Name="Alocacao_Aluno_Professor" Relationship="Self.FK_Alocacao_Aluno_Professor_Disciplina_Professor" FromRole="Disciplina_Professor" ToRole="Alocacao_Aluno_Professor" />
+          <NavigationProperty Name="Alocacao_Professor_Turma" Relationship="Self.FK_Alocacao_Professor_Turma_Disciplina_Professor" FromRole="Disciplina_Professor" ToRole="Alocacao_Professor_Turma" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK_Disciplina_Professor_Disciplina" FromRole="Disciplina_Professor" ToRole="Disciplina" />
+          <NavigationProperty Name="Professor" Relationship="Self.FK_Disciplina_Professor_Professor" FromRole="Disciplina_Professor" ToRole="Professor" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="Endereco_id" />
+          </Key>
+          <Property Name="Endereco_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rua" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="Int32" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="piso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizadors" Relationship="Self.FK_Utilizador_Endereco" FromRole="Endereco" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Genero_id" />
+          </Key>
+          <Property Name="Genero_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizadors" Relationship="Self.FK_Utilizador_Genero" FromRole="Genero" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Papel">
+          <Key>
+            <PropertyRef Name="Papel_id" />
+          </Key>
+          <Property Name="Papel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilizadors" Relationship="Self.FK_Utilizador_Papel" FromRole="Papel" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="Professor_id" />
+          </Key>
+          <Property Name="Professor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="utilizadorFK" Type="Int32" />
+          <NavigationProperty Name="Disciplina_Professor" Relationship="Self.FK_Disciplina_Professor_Professor" FromRole="Professor" ToRole="Disciplina_Professor" />
+          <NavigationProperty Name="Utilizador" Relationship="Self.FK_Professor_Utilizador" FromRole="Professor" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="Seccao">
+          <Key>
+            <PropertyRef Name="Seccao_id" />
+          </Key>
+          <Property Name="Seccao_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Classe_Turma_Seccao" FromRole="Seccao" ToRole="Classe_Turma" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Avaliacao">
+          <Key>
+            <PropertyRef Name="TipoAvaliacao_id" />
+          </Key>
+          <Property Name="TipoAvaliacao_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" />
+          <NavigationProperty Name="Avaliacaos" Relationship="Self.FK_Avaliacao_Tipo_Avaliacao" FromRole="Tipo_Avaliacao" ToRole="Avaliacao" />
+        </EntityType>
+        <EntityType Name="Trimestre">
+          <Key>
+            <PropertyRef Name="Trimestre_id" />
+          </Key>
+          <Property Name="Trimestre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Avaliacaos" Relationship="Self.FK_Avaliacao_Trimestre" FromRole="Trimestre" ToRole="Avaliacao" />
+        </EntityType>
+        <EntityType Name="Turma">
+          <Key>
+            <PropertyRef Name="Turma_id" />
+          </Key>
+          <Property Name="Turma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Classe_Turma_Turma" FromRole="Turma" ToRole="Classe_Turma" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="Turno_id" />
+          </Key>
+          <Property Name="Turno_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classe_Turma" Relationship="Self.FK_Classe_Turma_Turno" FromRole="Turno" ToRole="Classe_Turma" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="Utilizador_id" />
+          </Key>
+          <Property Name="Utilizador_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="palavra_passe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nomeUtilizador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="enderecoFK" Type="Int32" />
+          <Property Name="generoFK" Type="Int32" />
+          <Property Name="celular" Type="Int32" />
+          <Property Name="papelFK" Type="Int32" />
+          <NavigationProperty Name="Alunoes" Relationship="Self.FK_Aluno_Utilizador" FromRole="Utilizador" ToRole="Aluno" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK_Utilizador_Endereco" FromRole="Utilizador" ToRole="Endereco" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK_Utilizador_Genero" FromRole="Utilizador" ToRole="Genero" />
+          <NavigationProperty Name="Papel" Relationship="Self.FK_Utilizador_Papel" FromRole="Utilizador" ToRole="Papel" />
+          <NavigationProperty Name="Professors" Relationship="Self.FK_Professor_Utilizador" FromRole="Utilizador" ToRole="Professor" />
+        </EntityType>
+        <Association Name="FK_Alocacao_Aluno_Professor_Aluno">
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluno">
+              <PropertyRef Name="Aluno_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="alunoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Professor_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Professor_Disciplina_Professor">
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina_Professor">
+              <PropertyRef Name="DisciplinaProfessor_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="disciplinaProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Alocacao_Aluno_Professor">
+          <End Role="Alocacao_Aluno_Professor" Type="Self.Alocacao_Aluno_Professor" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alocacao_Aluno_Professor">
+              <PropertyRef Name="Alocacao_Aluno_Professor_id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="alocacaoAlunoProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Turma_Aluno">
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Turma" Type="Self.Alocacao_Aluno_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aluno">
+              <PropertyRef Name="Aluno_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Turma">
+              <PropertyRef Name="alunoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Aluno_Turma_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Aluno_Turma" Type="Self.Alocacao_Aluno_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Aluno_Turma">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Professor_Turma_Classe_Turma">
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="0..1" />
+          <End Role="Alocacao_Professor_Turma" Type="Self.Alocacao_Professor_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe_Turma">
+              <PropertyRef Name="ClasseTurma_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Professor_Turma">
+              <PropertyRef Name="classeTurmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alocacao_Professor_Turma_Disciplina_Professor">
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="0..1" />
+          <End Role="Alocacao_Professor_Turma" Type="Self.Alocacao_Professor_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina_Professor">
+              <PropertyRef Name="DisciplinaProfessor_id" />
+            </Principal>
+            <Dependent Role="Alocacao_Professor_Turma">
+              <PropertyRef Name="displinaProfessorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aluno_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="0..1" />
+          <End Role="Aluno" Type="Self.Aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="Utilizador_id" />
+            </Principal>
+            <Dependent Role="Aluno">
+              <PropertyRef Name="utilizadorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Tipo_Avaliacao">
+          <End Role="Tipo_Avaliacao" Type="Self.Tipo_Avaliacao" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Avaliacao">
+              <PropertyRef Name="TipoAvaliacao_id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="tipoAvaliacaoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avaliacao_Trimestre">
+          <End Role="Trimestre" Type="Self.Trimestre" Multiplicity="0..1" />
+          <End Role="Avaliacao" Type="Self.Avaliacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trimestre">
+              <PropertyRef Name="Trimestre_id" />
+            </Principal>
+            <Dependent Role="Avaliacao">
+              <PropertyRef Name="trimestreFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Classe">
+          <End Role="Classe" Type="Self.Classe" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classe">
+              <PropertyRef Name="Classe_id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="classeFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Seccao">
+          <End Role="Seccao" Type="Self.Seccao" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seccao">
+              <PropertyRef Name="Seccao_id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="seccaoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Turma">
+          <End Role="Turma" Type="Self.Turma" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turma">
+              <PropertyRef Name="Turma_id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="turmaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classe_Turma_Turno">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="0..1" />
+          <End Role="Classe_Turma" Type="Self.Classe_Turma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Turno_id" />
+            </Principal>
+            <Dependent Role="Classe_Turma">
+              <PropertyRef Name="turnoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplina_Professor_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="Disciplina_id" />
+            </Principal>
+            <Dependent Role="Disciplina_Professor">
+              <PropertyRef Name="disciplinaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disciplina_Professor_Professor">
+          <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+          <End Role="Disciplina_Professor" Type="Self.Disciplina_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="Professor_id" />
+            </Principal>
+            <Dependent Role="Disciplina_Professor">
+              <PropertyRef Name="professorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Endereco">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Endereco_id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="enderecoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Genero_id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="generoFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utilizador_Papel">
+          <End Role="Papel" Type="Self.Papel" Multiplicity="0..1" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papel">
+              <PropertyRef Name="Papel_id" />
+            </Principal>
+            <Dependent Role="Utilizador">
+              <PropertyRef Name="papelFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Professor_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="0..1" />
+          <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="Utilizador_id" />
+            </Principal>
+            <Dependent Role="Professor">
+              <PropertyRef Name="utilizadorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SGPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alocacao_Aluno_Professor" EntityType="Self.Alocacao_Aluno_Professor" />
+          <EntitySet Name="Alocacao_Aluno_Turma" EntityType="Self.Alocacao_Aluno_Turma" />
+          <EntitySet Name="Alocacao_Professor_Turma" EntityType="Self.Alocacao_Professor_Turma" />
+          <EntitySet Name="Alunoes" EntityType="Self.Aluno" />
+          <EntitySet Name="Avaliacaos" EntityType="Self.Avaliacao" />
+          <EntitySet Name="Classes" EntityType="Self.Classe" />
+          <EntitySet Name="Classe_Turma" EntityType="Self.Classe_Turma" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplina" />
+          <EntitySet Name="Disciplina_Professor" EntityType="Self.Disciplina_Professor" />
+          <EntitySet Name="Enderecoes" EntityType="Self.Endereco" />
+          <EntitySet Name="Generoes" EntityType="Self.Genero" />
+          <EntitySet Name="Papels" EntityType="Self.Papel" />
+          <EntitySet Name="Professors" EntityType="Self.Professor" />
+          <EntitySet Name="Seccaos" EntityType="Self.Seccao" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tipo_Avaliacao" EntityType="Self.Tipo_Avaliacao" />
+          <EntitySet Name="Trimestres" EntityType="Self.Trimestre" />
+          <EntitySet Name="Turmas" EntityType="Self.Turma" />
+          <EntitySet Name="Turnoes" EntityType="Self.Turno" />
+          <EntitySet Name="Utilizadors" EntityType="Self.Utilizador" />
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Aluno" Association="Self.FK_Alocacao_Aluno_Professor_Aluno">
+            <End Role="Aluno" EntitySet="Alunoes" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Classe_Turma" Association="Self.FK_Alocacao_Aluno_Professor_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Professor_Disciplina_Professor" Association="Self.FK_Alocacao_Aluno_Professor_Disciplina_Professor">
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Alocacao_Aluno_Professor" Association="Self.FK_Avaliacao_Alocacao_Aluno_Professor">
+            <End Role="Alocacao_Aluno_Professor" EntitySet="Alocacao_Aluno_Professor" />
+            <End Role="Avaliacao" EntitySet="Avaliacaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Turma_Aluno" Association="Self.FK_Alocacao_Aluno_Turma_Aluno">
+            <End Role="Aluno" EntitySet="Alunoes" />
+            <End Role="Alocacao_Aluno_Turma" EntitySet="Alocacao_Aluno_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Aluno_Turma_Classe_Turma" Association="Self.FK_Alocacao_Aluno_Turma_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Aluno_Turma" EntitySet="Alocacao_Aluno_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Professor_Turma_Classe_Turma" Association="Self.FK_Alocacao_Professor_Turma_Classe_Turma">
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+            <End Role="Alocacao_Professor_Turma" EntitySet="Alocacao_Professor_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alocacao_Professor_Turma_Disciplina_Professor" Association="Self.FK_Alocacao_Professor_Turma_Disciplina_Professor">
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+            <End Role="Alocacao_Professor_Turma" EntitySet="Alocacao_Professor_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aluno_Utilizador" Association="Self.FK_Aluno_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+            <End Role="Aluno" EntitySet="Alunoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Tipo_Avaliacao" Association="Self.FK_Avaliacao_Tipo_Avaliacao">
+            <End Role="Tipo_Avaliacao" EntitySet="Tipo_Avaliacao" />
+            <End Role="Avaliacao" EntitySet="Avaliacaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avaliacao_Trimestre" Association="Self.FK_Avaliacao_Trimestre">
+            <End Role="Trimestre" EntitySet="Trimestres" />
+            <End Role="Avaliacao" EntitySet="Avaliacaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Classe" Association="Self.FK_Classe_Turma_Classe">
+            <End Role="Classe" EntitySet="Classes" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Seccao" Association="Self.FK_Classe_Turma_Seccao">
+            <End Role="Seccao" EntitySet="Seccaos" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Turma" Association="Self.FK_Classe_Turma_Turma">
+            <End Role="Turma" EntitySet="Turmas" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classe_Turma_Turno" Association="Self.FK_Classe_Turma_Turno">
+            <End Role="Turno" EntitySet="Turnoes" />
+            <End Role="Classe_Turma" EntitySet="Classe_Turma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplina_Professor_Disciplina" Association="Self.FK_Disciplina_Professor_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplinas" />
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disciplina_Professor_Professor" Association="Self.FK_Disciplina_Professor_Professor">
+            <End Role="Professor" EntitySet="Professors" />
+            <End Role="Disciplina_Professor" EntitySet="Disciplina_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Endereco" Association="Self.FK_Utilizador_Endereco">
+            <End Role="Endereco" EntitySet="Enderecoes" />
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Genero" Association="Self.FK_Utilizador_Genero">
+            <End Role="Genero" EntitySet="Generoes" />
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utilizador_Papel" Association="Self.FK_Utilizador_Papel">
+            <End Role="Papel" EntitySet="Papels" />
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Professor_Utilizador" Association="Self.FK_Professor_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizadors" />
+            <End Role="Professor" EntitySet="Professors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SGPModelStoreContainer" CdmEntityContainer="SGPEntities">
+          <EntitySetMapping Name="Alocacao_Aluno_Professor">
+            <EntityTypeMapping TypeName="SGPModel.Alocacao_Aluno_Professor">
+              <MappingFragment StoreEntitySet="Alocacao_Aluno_Professor">
+                <ScalarProperty Name="Alocacao_Aluno_Professor_id" ColumnName="Alocacao_Aluno_Professor-id" />
+                <ScalarProperty Name="alunoFK" ColumnName="alunoFK" />
+                <ScalarProperty Name="disciplinaProfessorFK" ColumnName="disciplinaProfessorFK" />
+                <ScalarProperty Name="classeTurmaFK" ColumnName="classeTurmaFK" />
+                <ScalarProperty Name="anoLectivo" ColumnName="anoLectivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alocacao_Aluno_Turma">
+            <EntityTypeMapping TypeName="SGPModel.Alocacao_Aluno_Turma">
+              <MappingFragment StoreEntitySet="Alocacao_Aluno_Turma">
+                <ScalarProperty Name="AlocacaoAlunoTurma_id" ColumnName="AlocacaoAlunoTurma-id" />
+                <ScalarProperty Name="alunoFK" ColumnName="alunoFK" />
+                <ScalarProperty Name="classeTurmaFK" ColumnName="classeTurmaFK" />
+                <ScalarProperty Name="anoLectivo" ColumnName="anoLectivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alocacao_Professor_Turma">
+            <EntityTypeMapping TypeName="SGPModel.Alocacao_Professor_Turma">
+              <MappingFragment StoreEntitySet="Alocacao_Professor_Turma">
+                <ScalarProperty Name="AlocacaoProfessorTurma_id" ColumnName="AlocacaoProfessorTurma-id" />
+                <ScalarProperty Name="displinaProfessorFK" ColumnName="displinaProfessorFK" />
+                <ScalarProperty Name="classeTurmaFK" ColumnName="classeTurmaFK" />
+                <ScalarProperty Name="anoLectivo" ColumnName="anoLectivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alunoes">
+            <EntityTypeMapping TypeName="SGPModel.Aluno">
+              <MappingFragment StoreEntitySet="Aluno">
+                <ScalarProperty Name="Aluno_id" ColumnName="Aluno-id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nomepai" ColumnName="nomepai" />
+                <ScalarProperty Name="nomemae" ColumnName="nomemae" />
+                <ScalarProperty Name="bi" ColumnName="bi" />
+                <ScalarProperty Name="datanascimento" ColumnName="datanascimento" />
+                <ScalarProperty Name="utilizadorFK" ColumnName="utilizadorFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avaliacaos">
+            <EntityTypeMapping TypeName="SGPModel.Avaliacao">
+              <MappingFragment StoreEntitySet="Avaliacao">
+                <ScalarProperty Name="Avaliacao_id" ColumnName="Avaliacao-id" />
+                <ScalarProperty Name="tipoAvaliacaoFK" ColumnName="tipoAvaliacaoFK" />
+                <ScalarProperty Name="trimestreFK" ColumnName="trimestreFK" />
+                <ScalarProperty Name="alocacaoAlunoProfessorFK" ColumnName="alocacaoAlunoProfessorFK" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="SGPModel.Classe">
+              <MappingFragment StoreEntitySet="Classe">
+                <ScalarProperty Name="Classe_id" ColumnName="Classe-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classe_Turma">
+            <EntityTypeMapping TypeName="SGPModel.Classe_Turma">
+              <MappingFragment StoreEntitySet="Classe_Turma">
+                <ScalarProperty Name="ClasseTurma_id" ColumnName="ClasseTurma-id" />
+                <ScalarProperty Name="classeFK" ColumnName="classeFK" />
+                <ScalarProperty Name="turmaFK" ColumnName="turmaFK" />
+                <ScalarProperty Name="turnoFK" ColumnName="turnoFK" />
+                <ScalarProperty Name="seccaoFK" ColumnName="seccaoFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplinas">
+            <EntityTypeMapping TypeName="SGPModel.Disciplina">
+              <MappingFragment StoreEntitySet="Disciplina">
+                <ScalarProperty Name="Disciplina_id" ColumnName="Disciplina-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplina_Professor">
+            <EntityTypeMapping TypeName="SGPModel.Disciplina_Professor">
+              <MappingFragment StoreEntitySet="Disciplina_Professor">
+                <ScalarProperty Name="DisciplinaProfessor_id" ColumnName="DisciplinaProfessor-id" />
+                <ScalarProperty Name="disciplinaFK" ColumnName="disciplinaFK" />
+                <ScalarProperty Name="professorFK" ColumnName="professorFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enderecoes">
+            <EntityTypeMapping TypeName="SGPModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="Endereco_id" ColumnName="Endereco-id" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="piso" ColumnName="piso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generoes">
+            <EntityTypeMapping TypeName="SGPModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Genero_id" ColumnName="Genero-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Papels">
+            <EntityTypeMapping TypeName="SGPModel.Papel">
+              <MappingFragment StoreEntitySet="Papel">
+                <ScalarProperty Name="Papel_id" ColumnName="Papel-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professors">
+            <EntityTypeMapping TypeName="SGPModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="Professor_id" ColumnName="Professor-id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="bi" ColumnName="bi" />
+                <ScalarProperty Name="utilizadorFK" ColumnName="utilizadorFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seccaos">
+            <EntityTypeMapping TypeName="SGPModel.Seccao">
+              <MappingFragment StoreEntitySet="Seccao">
+                <ScalarProperty Name="Seccao_id" ColumnName="Seccao-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SGPModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Avaliacao">
+            <EntityTypeMapping TypeName="SGPModel.Tipo_Avaliacao">
+              <MappingFragment StoreEntitySet="Tipo_Avaliacao">
+                <ScalarProperty Name="TipoAvaliacao_id" ColumnName="TipoAvaliacao-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trimestres">
+            <EntityTypeMapping TypeName="SGPModel.Trimestre">
+              <MappingFragment StoreEntitySet="Trimestre">
+                <ScalarProperty Name="Trimestre_id" ColumnName="Trimestre-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turmas">
+            <EntityTypeMapping TypeName="SGPModel.Turma">
+              <MappingFragment StoreEntitySet="Turma">
+                <ScalarProperty Name="Turma_id" ColumnName="Turma-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnoes">
+            <EntityTypeMapping TypeName="SGPModel.Turno">
+              <MappingFragment StoreEntitySet="Turno">
+                <ScalarProperty Name="Turno_id" ColumnName="Turno-id" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizadors">
+            <EntityTypeMapping TypeName="SGPModel.Utilizador">
+              <MappingFragment StoreEntitySet="Utilizador">
+                <ScalarProperty Name="Utilizador_id" ColumnName="Utilizador-id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="palavra_passe" ColumnName="palavra-passe" />
+                <ScalarProperty Name="nomeUtilizador" ColumnName="nomeUtilizador" />
+                <ScalarProperty Name="enderecoFK" ColumnName="enderecoFK" />
+                <ScalarProperty Name="generoFK" ColumnName="generoFK" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="papelFK" ColumnName="papelFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

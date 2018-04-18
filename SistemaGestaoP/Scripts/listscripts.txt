@@ -1,0 +1,259 @@
+ Volume in drive D is PhOeNiX
+ Volume Serial Number is 1CD4-8FAD
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts
+
+bootstrap.js              bootstrap.min.js          gmaps-scripts.js
+gmaps.js                  jquery-ui-1.10.3.js       jquery-ui-1.10.3.min.js
+jquery.min.js             jquery.validate.js        
+               8 File(s)        675,840 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\Director
+
+app.js         dashboard.js   demo.js        
+               3 File(s)         54,789 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins
+
+chart.js   
+               1 File(s)         50,201 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\bootstrap-slider
+
+bootstrap-slider.js   
+               1 File(s)         11,246 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\bootstrap-wysihtml5
+
+bootstrap3-wysihtml5.all.min.js   bootstrap3-wysihtml5.js
+               2 File(s)        148,050 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\bs-datetimepicker
+
+bootstrap-datetimepicker.js       bootstrap-datetimepicker.min.js
+               2 File(s)         88,503 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor
+
+build-config.js   ckeditor.js       config.js         styles.js
+               4 File(s)        468,255 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\adapters
+
+jquery.js   
+               1 File(s)          3,011 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\lang
+
+af.js        ar.js        bg.js        bn.js        bs.js        ca.js
+cs.js        cy.js        da.js        de.js        el.js        en-au.js
+en-ca.js     en-gb.js     en.js        eo.js        es.js        et.js
+eu.js        fa.js        fi.js        fo.js        fr-ca.js     fr.js
+gl.js        gu.js        he.js        hi.js        hr.js        hu.js
+id.js        is.js        it.js        ja.js        ka.js        km.js
+ko.js        ku.js        lt.js        lv.js        mk.js        mn.js
+ms.js        nb.js        nl.js        no.js        pl.js        pt-br.js
+pt.js        ro.js        ru.js        si.js        sk.js        sl.js
+sq.js        sr-latn.js   sr.js        sv.js        th.js        tr.js
+ug.js        uk.js        vi.js        zh-cn.js     zh.js        
+              65 File(s)        924,084 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\a11yhelp\dialogs
+
+a11yhelp.js   
+               1 File(s)          2,860 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\a11yhelp\dialogs\lang
+
+ar.js        bg.js        ca.js        cs.js        cy.js        da.js
+de.js        el.js        en.js        eo.js        es.js        et.js
+fa.js        fi.js        fr-ca.js     fr.js        gl.js        gu.js
+he.js        hi.js        hr.js        hu.js        id.js        it.js
+ja.js        km.js        ko.js        ku.js        lt.js        lv.js
+mk.js        mn.js        nb.js        nl.js        no.js        pl.js
+pt-br.js     pt.js        ro.js        ru.js        si.js        sk.js
+sl.js        sq.js        sr-latn.js   sr.js        sv.js        th.js
+tr.js        ug.js        uk.js        vi.js        zh-cn.js     zh.js
+              54 File(s)        190,531 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\about\dialogs
+
+about.js   
+               1 File(s)          1,517 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\clipboard\dialogs
+
+paste.js   
+               1 File(s)          3,509 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\dialog
+
+dialogDefinition.js   
+               1 File(s)            152 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\image\dialogs
+
+image.js   
+               1 File(s)         20,614 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\link\dialogs
+
+anchor.js   link.js     
+               2 File(s)         18,560 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\pastefromword\filter
+
+default.js   
+               1 File(s)         13,960 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\scayt\dialogs
+
+options.js   
+               1 File(s)          8,214 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\specialchar\dialogs
+
+specialchar.js   
+               1 File(s)          4,837 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\specialchar\dialogs\lang
+
+ar.js      bg.js      ca.js      cs.js      cy.js      de.js      el.js
+en.js      eo.js      es.js      et.js      fa.js      fi.js      fr-ca.js
+fr.js      gl.js      he.js      hr.js      hu.js      id.js      it.js
+ja.js      km.js      ku.js      lv.js      nb.js      nl.js      no.js
+pl.js      pt-br.js   pt.js      ru.js      si.js      sk.js      sl.js
+sq.js      sv.js      th.js      tr.js      ug.js      uk.js      vi.js
+zh-cn.js   zh.js      
+              44 File(s)        211,943 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\table\dialogs
+
+table.js   
+               1 File(s)          8,808 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\tabletools\dialogs
+
+tableCell.js   
+               1 File(s)          6,223 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\ckeditor\plugins\wsc\dialogs
+
+wsc.js      wsc_ie.js   
+               2 File(s)         36,376 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\datatables
+
+dataTables.bootstrap.js   jquery.dataTables.js      
+               2 File(s)        396,714 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\datepicker
+
+bootstrap-datepicker.js   
+               1 File(s)         48,509 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\datepicker\locales
+
+bootstrap-datepicker.ar.js         bootstrap-datepicker.az.js
+bootstrap-datepicker.bg.js         bootstrap-datepicker.ca.js
+bootstrap-datepicker.cs.js         bootstrap-datepicker.cy.js
+bootstrap-datepicker.da.js         bootstrap-datepicker.de.js
+bootstrap-datepicker.el.js         bootstrap-datepicker.es.js
+bootstrap-datepicker.et.js         bootstrap-datepicker.fa.js
+bootstrap-datepicker.fi.js         bootstrap-datepicker.fr.js
+bootstrap-datepicker.gl.js         bootstrap-datepicker.he.js
+bootstrap-datepicker.hr.js         bootstrap-datepicker.hu.js
+bootstrap-datepicker.id.js         bootstrap-datepicker.is.js
+bootstrap-datepicker.it.js         bootstrap-datepicker.ja.js
+bootstrap-datepicker.ka.js         bootstrap-datepicker.kk.js
+bootstrap-datepicker.kr.js         bootstrap-datepicker.lt.js
+bootstrap-datepicker.lv.js         bootstrap-datepicker.mk.js
+bootstrap-datepicker.ms.js         bootstrap-datepicker.nb.js
+bootstrap-datepicker.nl-BE.js      bootstrap-datepicker.nl.js
+bootstrap-datepicker.no.js         bootstrap-datepicker.pl.js
+bootstrap-datepicker.pt-BR.js      bootstrap-datepicker.pt.js
+bootstrap-datepicker.ro.js         bootstrap-datepicker.rs-latin.js
+bootstrap-datepicker.rs.js         bootstrap-datepicker.ru.js
+bootstrap-datepicker.sk.js         bootstrap-datepicker.sl.js
+bootstrap-datepicker.sq.js         bootstrap-datepicker.sv.js
+bootstrap-datepicker.sw.js         bootstrap-datepicker.th.js
+bootstrap-datepicker.tr.js         bootstrap-datepicker.ua.js
+bootstrap-datepicker.vi.js         bootstrap-datepicker.zh-CN.js
+bootstrap-datepicker.zh-TW.js      
+              51 File(s)         38,715 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\daterangepicker
+
+daterangepicker.js   
+               1 File(s)         53,167 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\flot
+
+excanvas.js                      excanvas.min.js
+jquery.colorhelpers.js           jquery.colorhelpers.min.js
+jquery.flot.canvas.js            jquery.flot.canvas.min.js
+jquery.flot.categories.js        jquery.flot.categories.min.js
+jquery.flot.crosshair.js         jquery.flot.crosshair.min.js
+jquery.flot.errorbars.js         jquery.flot.errorbars.min.js
+jquery.flot.fillbetween.js       jquery.flot.fillbetween.min.js
+jquery.flot.image.js             jquery.flot.image.min.js
+jquery.flot.js                   jquery.flot.min.js
+jquery.flot.navigate.js          jquery.flot.navigate.min.js
+jquery.flot.pie.js               jquery.flot.pie.min.js
+jquery.flot.resize.js            jquery.flot.resize.min.js
+jquery.flot.selection.js         jquery.flot.selection.min.js
+jquery.flot.stack.js             jquery.flot.stack.min.js
+jquery.flot.symbol.js            jquery.flot.symbol.min.js
+jquery.flot.threshold.js         jquery.flot.threshold.min.js
+jquery.flot.time.js              jquery.flot.time.min.js
+              34 File(s)        435,037 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\fullcalendar
+
+fullcalendar.js       fullcalendar.min.js   
+               2 File(s)        208,368 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\iCheck
+
+icheck.js       icheck.min.js   
+               2 File(s)         19,630 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\input-mask
+
+jquery.inputmask.date.extensions.js
+jquery.inputmask.extensions.js
+jquery.inputmask.js
+jquery.inputmask.numeric.extensions.js
+jquery.inputmask.phone.extensions.js
+jquery.inputmask.regex.extensions.js
+               6 File(s)        141,431 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\misc
+
+html5shiv.js              jquery.ba-resize.min.js   jquery.placeholder.js
+modernizr.min.js          respond.min.js            
+               5 File(s)         30,278 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\multiselect
+
+jquery.multi-select.js   
+               1 File(s)         19,398 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\nestable
+
+jquery.nestable.js   nestable.js          
+               2 File(s)         19,253 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\slimScroll
+
+jquery.slimscroll.js       jquery.slimscroll.min.js
+               2 File(s)         18,788 bytes
+
+ Directory of D:\Facul\C#\SistemaGestaoP\SistemaGestaoP\Scripts\plugins\timepicker
+
+bootstrap-timepicker.js       bootstrap-timepicker.min.js
+               2 File(s)         42,374 bytes
+
+     Total Files Listed:
+             310 File(s)      4,423,745 bytes
+               0 Dir(s)  17,976,279,040 bytes free

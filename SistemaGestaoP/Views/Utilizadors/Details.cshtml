@@ -1,0 +1,74 @@
+﻿@model SistemaGestaoP.Models.Utilizador
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Utilizador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.palavra_passe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.palavra_passe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeUtilizador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeUtilizador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genero.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero.designacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Papel.designacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Papel.designacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Utilizador_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,4 @@
-﻿
+﻿@model SistemaGestaoP.Models.AvaliacaoViewModel
 @{
     ViewBag.Title = "gerarAvaliacao";
 }
@@ -15,26 +15,34 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor("" ,htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model=>model.disciplinaProfessor, "DisciplinaProfessor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("alunoFK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.alunoFK, "", new { @class = "text-danger" })
+                @Html.DropDownList("DisciplinaProfessor", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.disciplinaProfessor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.disciplinaProfessorFK, "disciplinaProfessorFK", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.trimestre, "Trimestre", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("disciplinaProfessorFK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.disciplinaProfessorFK, "", new { @class = "text-danger" })
+                @Html.DropDownList("Trimestre", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.trimestre, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.classeTurmaFK, "classeTurmaFK", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tipoAvaliacao, "TipoAvaliacao", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("classeTurmaFK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.classeTurmaFK, "", new { @class = "text-danger" })
+                @Html.DropDownList("TipoAvaliacao", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tipoAvaliacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.classeTurma, "ClasseTurma", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ClasseTurma", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tipoAvaliacao, "", new { @class = "text-danger" })
             </div>
         </div>
 

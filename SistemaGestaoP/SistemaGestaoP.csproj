@@ -207,6 +207,8 @@
     <Compile Include="Models\Avaliacao.cs">
       <DependentUpon>ModelSGP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MediaTrimestral.cs" />
+    <Compile Include="ViewModels\AvaliacaoViewModel.cs" />
     <Compile Include="Models\Classe.cs">
       <DependentUpon>ModelSGP.tt</DependentUpon>
     </Compile>

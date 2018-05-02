@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaGestaoP.Models;
+//using SistemaGestaoP.ViewModels;
 
 namespace SistemaGestaoP.Controllers
 {
@@ -117,22 +118,43 @@ namespace SistemaGestaoP.Controllers
             return View(avaliacao);
         }
 
-        public void gerarAvaliacao(int idTrimestre, int idTipoAvaliacao, int disciplinaProf, int classeTurma, int anoLectivo)
+
+        public ActionResult gerarAvaliacao()
         {
-            //List<int> aAP = new List<int>();
-            foreach (Alocacao_Aluno_Professor a in db.Alocacao_Aluno_Professor)
+            ViewBag.TipoAvaliacao = new SelectList(db.Tipo_Avaliacao, "TipoAvaliacao_id", "designacao");
+            ViewBag.Trimestre = new SelectList(db.Trimestres, "Trimestre_id", "designacao");
+            ViewBag.DisciplinaProfessor = new SelectList(db.Disciplina_Professor, "DisciplinaProfessor_id", "DisciplinaProfessor_id");
+            ViewBag.ClasseTurma = new SelectList(db.Classe_Turma, "ClasseTurma_id", "ClasseTurma_id");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult gerarAvaliacao(AvaliacaoViewModel model)
+        {
+            if (ModelState.IsValid)
             {
-                if(a.disciplinaProfessorFK == disciplinaProf && a.classeTurmaFK==classeTurma && a.anoLectivo == anoLectivo)
+                //List<int> aAP = new List<int>();
+                foreach (Alocacao_Aluno_Professor a in db.Alocacao_Aluno_Professor)
                 {
-                    Avaliacao avali = new Avaliacao();
-                    avali.tipoAvaliacaoFK = idTipoAvaliacao;
-                    avali.trimestreFK = idTrimestre;
-                    avali.alocacaoAlunoProfessorFK = a.Alocacao_Aluno_Professor_id;
-                    db.Avaliacaos.Add(avali);
-                    
+                    if (a.disciplinaProfessorFK == model.disciplinaProfessor && a.classeTurmaFK == model.classeTurma && a.anoLectivo == model.anoLectivo)
+                    {
+                        Avaliacao avali = new Avaliacao();
+                        avali.tipoAvaliacaoFK = model.tipoAvaliacao;
+                        avali.trimestreFK = model.trimestre;
+                        avali.alocacaoAlunoProfessorFK = a.Alocacao_Aluno_Professor_id;
+                        db.Avaliacaos.Add(avali);
+
+                    }
                 }
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            db.SaveChanges();
+            ViewBag.TipoAvaliacao = new SelectList(db.Tipo_Avaliacao, "TipoAvaliacao_id", "designacao",model.tipoAvaliacao);
+            ViewBag.Trimestre = new SelectList(db.Trimestres, "Trimestre_id", "designacao",model.trimestre);
+            ViewBag.DisciplinaProfessor = new SelectList(db.Disciplina_Professor, "DisciplinaProfessor_id", "DisciplinaProfessor_id", model.disciplinaProfessor);
+            ViewBag.ClasseTurma = new SelectList(db.Classe_Turma, "ClasseTurma_id", "ClasseTurma_id",model.classeTurma);
+            return View(model);
         }
         // POST: Avaliacaos/Delete/5
         [HttpPost, ActionName("Delete")]

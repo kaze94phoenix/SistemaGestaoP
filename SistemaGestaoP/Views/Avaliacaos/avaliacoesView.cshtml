@@ -1,0 +1,70 @@
+﻿@model SistemaGestaoP.Models.AvaliacaoViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @Html.ActionLink("Criar Avaliacao", "gerarAvaliacao")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Aluno
+        </th>
+        <th>
+            AC1
+        </th>
+        <th>
+            AC2
+        </th>
+        <th>
+            AS1
+        </th>
+        <th>
+            AS2
+        </th>
+    </tr>
+
+    @foreach (var aluno in Model.AlunoProfessor)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => aluno.Aluno.nome)
+            </td>
+            @foreach (var avaliacao in Model.Avaliacoes)
+            {
+                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => avaliacao.nota)
+                    </td>
+                }
+
+            }
+            @foreach (var avaliacao in Model.Avaliacoes)
+            {
+                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => avaliacao.nota)
+                    </td>
+                }
+
+            }
+
+            <td>
+                
+                @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id,1)
+            </td>
+            
+        </tr>
+    }
+
+</table>

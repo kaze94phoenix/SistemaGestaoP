@@ -339,6 +339,10 @@
       <DependentUpon>ModelSGP.edmx</DependentUpon>
       <LastGenOutput>ModelSGP.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\a11yhelp.js" />
     <Content Include="Scripts\about.js" />
     <Content Include="Scripts\af.js" />
@@ -465,6 +469,7 @@
     <Content Include="Scripts\is.js" />
     <Content Include="Scripts\it.js" />
     <Content Include="Scripts\ja.js" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -710,6 +715,7 @@
     <Content Include="Scripts\slimScroll.jquery.json" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Avaliacaos\gerarAvaliacao.cshtml" />
+    <Content Include="Views\Avaliacaos\avaliacoesView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

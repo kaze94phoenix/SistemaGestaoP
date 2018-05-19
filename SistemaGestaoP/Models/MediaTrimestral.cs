@@ -9,19 +9,13 @@ namespace SistemaGestaoP.Models
     public class MediaTrimestral
     {
         private SGPEntities db = new SGPEntities();
-        public int alunoId { set; get; }
-        public int anoLectivo { set; get; }
+        public int alunoProfessor { set; get; }
         public int trimestre { set; get; }
-        public int disciplinaProfessor { set; get; }
-        public int classeTurma { set; get; }
-
-        public MediaTrimestral(int alunoId, int disciplinaProfessor, int classeTurma, int trimestre, int anoLectivo)
+        
+        public MediaTrimestral(int alunoProfessorId, int trimestre)
         {
-           this.alunoId=alunoId;
-           this.disciplinaProfessor = disciplinaProfessor;
-            this.classeTurma = classeTurma;
+           this.alunoProfessor = alunoProfessorId;
             this.trimestre = trimestre;
-            this.anoLectivo = anoLectivo;
             float? mAC = 0;
             float? mAS = 0;
             float? mT = 0;
@@ -29,29 +23,21 @@ namespace SistemaGestaoP.Models
         }
         public MediaTrimestral()
         {
-
+            float? mAC = 0;
+            float? mAS = 0;
+            float? mT = 0;
         }
         public float? mediaAvaliacaoContinua()
         {
-            List<int> alunoProfessores = new List<int>();
-            foreach (Alocacao_Aluno_Professor aP in db.Alocacao_Aluno_Professor)
+            List<float?> avaliacaoContinua = new List<float?>();
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
             {
-                if(aP.alunoFK==alunoId && aP.classeTurmaFK==classeTurma && aP.disciplinaProfessorFK == disciplinaProfessor && aP.anoLectivo==anoLectivo)
+                if (ava.tipoAvaliacaoFK == 1 && ava.trimestreFK==trimestre && ava.alocacaoAlunoProfessorFK==alunoProfessor)
                 {
-                    alunoProfessores.Add(aP.Alocacao_Aluno_Professor_id);
+                    avaliacaoContinua.Add(ava.nota);
                 }
                 
-            }
-            var avaliacoes = db.Avaliacaos;
-            List<float?> avaliacaoContinua = new List<float?>();
-            foreach (int a in alunoProfessores)
-            {
-                foreach(Avaliacao ava in avaliacoes){
-                    if (a==ava.alocacaoAlunoProfessorFK && ava.tipoAvaliacaoFK==1 && ava.trimestreFK==trimestre)
-                    {
-                        avaliacaoContinua.Add(ava.nota);
-                    }
-                }
             }
 
             float? soma = 0;
@@ -62,5 +48,103 @@ namespace SistemaGestaoP.Models
             return soma/avaliacaoContinua.Count;
 
     }
+        public float? mediaAvaliacaoContinua(int alunoProfessor, int trimestre)
+        {
+            List<float?> avaliacaoContinua = new List<float?>();
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 1 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoContinua.Add(ava.nota);
+                }
+
+            }
+
+            float? soma = 0;
+            foreach (float? sum in avaliacaoContinua)
+            {
+                soma += sum;
+            }
+            return soma / avaliacaoContinua.Count;
+
+        }
+
+        public float? mediaAvaliacaoSistematica()
+        {
+            List<float?> avaliacaoSistematica = new List<float?>();
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 2 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoSistematica.Add(ava.nota);
+                }
+
+            }
+
+            float? soma = 0;
+            foreach (float? sum in avaliacaoSistematica)
+            {
+                soma += sum;
+            }
+            return (mediaAvaliacaoContinua()+soma)/(avaliacaoSistematica.Count+1);
+
+        }
+
+        public float? mediaAvaliacaoSistematica(int alunoProfessor, int trimestre)
+        {
+            List<float?> avaliacaoSistematica = new List<float?>();
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 2 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoSistematica.Add(ava.nota);
+                }
+
+            }
+
+            float? soma = 0;
+            foreach (float? sum in avaliacaoSistematica)
+            {
+                soma += sum;
+            }
+            return (mediaAvaliacaoContinua() + soma) / (avaliacaoSistematica.Count + 1);
+
+        }
+
+
+        public float? mediaTrimestral(int alunoProfessor, int trimestre)
+        {
+            float? avaliacaoPeriodicaTrimestral = 0;
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 3 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoPeriodicaTrimestral = ava.nota;
+                }
+
+            }   
+            return ((2*mediaAvaliacaoSistematica(alunoProfessor,trimestre)) + avaliacaoPeriodicaTrimestral)/3;
+
+        }
+
+        public float? mediaTrimestral()
+        {
+            float? avaliacaoPeriodicaTrimestral = 0;
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 3 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoPeriodicaTrimestral = ava.nota;
+                }
+
+            }
+            return ((2 * mediaAvaliacaoSistematica()) + avaliacaoPeriodicaTrimestral) / 3;
+
+        }
     }
 }

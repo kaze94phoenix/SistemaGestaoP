@@ -175,5 +175,20 @@ namespace SistemaGestaoP.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult avaliacoesView()
+        {
+            var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
+            var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
+
+            AvaliacaoViewModel avaliacaoVM = new AvaliacaoViewModel
+            {
+                AlunoProfessor = alocacao_Aluno_Professor.ToList(),
+                Avaliacoes = avaliacaos.ToList(),
+                MediaTrimestral = new MediaTrimestral(15,2)
+            };
+
+            return View(avaliacaoVM);
+        }
     }
 }

@@ -1,0 +1,9 @@
+SGP esfm
+* criar filtros[dropdownlist] para que gere pauta de acordo com seus criterios
+* possibilitar filtrar os proprios filtros (ex: na escolha de um prof. so as disciplinas e turmas que lecciona devem aparecer)
+* possibilitar edicao das notas dinamicamente
+* autenticacao
+* gerar usuarios professores e alunos automaticamente
+* criar limitacoes para os rolos (o que cada um pode ou nao fazer)
+* relatorios e organizacao visual do sistema por completo
+* implementar o modulo do aluno

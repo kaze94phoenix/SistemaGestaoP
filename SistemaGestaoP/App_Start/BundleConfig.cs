@@ -7,7 +7,9 @@ namespace SistemaGestaoP
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-           // bundles.
+            bundles.Add(new ScriptBundle("~/bundles/jeditable").Include(
+                        "~/Scripts/jquery.jeditable.mini.js"));
+            // bundles.
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -21,21 +23,16 @@ namespace SistemaGestaoP
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 "~/Scripts/bootstrap.js",
 "~/Scripts/bootstrap.min.js",
-"~/Scripts/gmaps-scripts.js",
-"~/Scripts/gmaps.js",
-"~/Scripts/jquery.min.js",
-"~/Scripts/jquery-ui-1.10.3.min.js",
 "~/Scripts/Director/dashboard.js",
 "~/Scripts/plugins/chart.js",
 "~/Scripts/plugins/daterangepicker/daterangepicker.js",
 "~/Scripts/plugins/fullcalendar/fullcalendar.js",
 "~/Scripts/plugins/iCheck/icheck.min.js",
 "~/Scripts/Director/app.js",
-"~/Scripts/",
 "~/Scripts/",
 "~/Scripts/"));
 
@@ -73,7 +70,7 @@ namespace SistemaGestaoP
  "~/Content/"
 ));
 
-            BundleTable.EnableOptimizations = true;
+           BundleTable.EnableOptimizations = true;
         }
     }
 }

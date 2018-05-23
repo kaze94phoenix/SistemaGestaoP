@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaGestaoP.Models;
+using Newtonsoft.Json.Linq;
 //using SistemaGestaoP.ViewModels;
 
 namespace SistemaGestaoP.Controllers
@@ -190,5 +191,30 @@ namespace SistemaGestaoP.Controllers
 
             return View(avaliacaoVM);
         }
+
+        [HttpPost]
+        public ActionResult editarAvaliacoes(int id, string propertyName, string value)
+        {
+            var status = false;
+            var message = "";
+
+            //Actualizando a avaliacao
+            var avaliacao = db.Avaliacaos.Find(id);
+
+            if (avaliacao != null) { 
+            db.Entry(avaliacao).Property(propertyName).CurrentValue = float.Parse(value);
+            db.SaveChanges();
+            status = true;
+        } else{
+                message = "erro ao editar avaliacao";
+        }
+
+            var response = new { value = value, message = message, status = status };
+            JObject o = JObject.FromObject(response);
+            return Content(o.ToString());
+
+
+        }
+
     }
 }

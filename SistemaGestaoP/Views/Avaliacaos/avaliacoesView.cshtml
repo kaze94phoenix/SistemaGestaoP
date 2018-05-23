@@ -42,7 +42,7 @@
             {
                 if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1)
                 {
-                    <td>
+                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
                         @Html.DisplayFor(modelItem => avaliacao.nota)
                     </td>
                 }
@@ -52,7 +52,7 @@
             {
                 if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2)
                 {
-                    <td>
+                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
                         @Html.DisplayFor(modelItem => avaliacao.nota)
                     </td>
                 }
@@ -68,3 +68,44 @@
     }
 
 </table>
+@section Scripts {
+    @*<script src="https://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>*@
+    @Scripts.Render("~/bundles/jeditable")
+<script>
+
+    $(document).ready(function () {
+        var oldValue = '';
+        $('.edit').editable('/Avaliacaos/editarAvaliacoes/',{
+            cssclass: 'jeditForm',
+            tooltip: 'edite as notas',
+            width: 'none',
+            height: 'none',
+            onsubmit: function (settings, original) {
+                oldValue = original.revert;
+            },
+            submitdata: function () {
+                return {
+                    id: $(this).data('id'),
+                    PropertyName: $(this).data('propertyname')
+                }
+            },
+            callback: function (value, settings) {
+                var jsonData = $.parseJSON(value);
+                if (jsonData.status) {
+                    $(this).text(jsonData.value);
+                } else {
+                    $(this).text(oldValue);
+                }
+            }
+        })
+
+        }
+    )
+
+</script>
+}
+
+
+
+
+

@@ -13,6 +13,40 @@
 <p>
     @Html.ActionLink("Criar Avaliacao", "gerarAvaliacao")
 </p>
+
+<div class="col-md-3 form-group">
+    <select class="form-control m-b-10">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+    </select>
+</div>
+<div class="col-md-3 form-group">
+    <select class="form-control m-b-10">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+    </select>
+</div>
+<div class="col-md-3 form-group">
+    <select class="form-control m-b-10">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+    </select>
+</div>
+<div class="col-md-3 form-group">
+    <select class="form-control m-b-10">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+    </select>
+</div>
+
+<div class="col-md-3 form-group">
+    <button type="submit" class="btn btn-info">Submit</button>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -70,6 +104,7 @@
 </table>
 @section Scripts {
     @*<script src="https://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>*@
+    @Scripts.Render("~/bundles/select2")
     @Scripts.Render("~/bundles/jeditable")
 <script>
 

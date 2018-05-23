@@ -9,6 +9,9 @@ namespace SistemaGestaoP
         {
             bundles.Add(new ScriptBundle("~/bundles/jeditable").Include(
                         "~/Scripts/jquery.jeditable.mini.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                        "~/Scripts/select2.min.js"));
             // bundles.
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.min.js"));
@@ -61,7 +64,7 @@ namespace SistemaGestaoP
  "~/Content/iCheck/minimal/_all.css",
  "~/Content/iCheck/polaris/polaris.css",
  "~/Content/iCheck/square/_all.css",
- "~/Content/",
+ "~/Content/select2.min.css",
  "~/Content/",
  "~/Content/",
  "~/Content/",

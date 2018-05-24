@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SistemaGestaoP.Models
 {
@@ -15,5 +16,15 @@ namespace SistemaGestaoP.Models
         public List<Avaliacao> Avaliacoes { set; get; }
         public List<Alocacao_Aluno_Professor> AlunoProfessor { set; get; }
         public MediaTrimestral MediaTrimestral { set; get; }
+
+        public IEnumerable<SelectListItem> professores { set; get; }
+
+        public IEnumerable<SelectListItem> turmas { set; get; }
+
+        public IEnumerable<SelectListItem> disciplinas { set; get; }
+
+        public IEnumerable<SelectListItem> turnos { set; get; }
+
+        
     }
 }

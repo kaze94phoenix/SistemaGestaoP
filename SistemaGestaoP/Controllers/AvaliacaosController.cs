@@ -179,14 +179,45 @@ namespace SistemaGestaoP.Controllers
 
         public ActionResult avaliacoesView()
         {
+            
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
             var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
+            var dscplns = new List<SelectListItem>();
+            var prfssrs = new List<SelectListItem>();
+            var trms = new List<SelectListItem>();
+            var trns = new List<SelectListItem>();
+
+
+            //incluindo elementos nas droplists
+            foreach (var prof in db.Professors.ToList())
+            {
+                prfssrs.Add(new SelectListItem { Value = prof.Professor_id.ToString(), Text = prof.nome });
+            }
+
+            foreach (var disc in db.Disciplinas.ToList())
+            {
+                dscplns.Add(new SelectListItem { Value = disc.Disciplina_id.ToString(), Text = disc.designacao });
+            }
+
+            foreach (var turma in db.Turmas.ToList())
+            {
+                trms.Add(new SelectListItem { Value = turma.Turma_id.ToString(), Text = turma.designacao });
+            }
+
+            foreach (var turno in db.Turnoes.ToList())
+            {
+                trns.Add(new SelectListItem { Value = turno.Turno_id.ToString(), Text = turno.designacao });
+            }
 
             AvaliacaoViewModel avaliacaoVM = new AvaliacaoViewModel
             {
                 AlunoProfessor = alocacao_Aluno_Professor.ToList(),
                 Avaliacoes = avaliacaos.ToList(),
-                MediaTrimestral = new MediaTrimestral(15,2)
+                MediaTrimestral = new MediaTrimestral(15, 2),
+                disciplinas = dscplns,
+                turnos = trns,
+                turmas = trms,
+                professores = prfssrs
             };
 
             return View(avaliacaoVM);

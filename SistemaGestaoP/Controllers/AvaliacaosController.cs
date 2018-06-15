@@ -177,51 +177,58 @@ namespace SistemaGestaoP.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult avaliacoesView()
+        public ActionResult avaliacoesView(int? disciplinasProf, int? turmasClasse)
         {
-            
+            var aloPA = new List<Alocacao_Aluno_Professor>();
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
             var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
-            var dscplns = new List<SelectListItem>();
+            var dscplnsProf = new List<SelectListItem>();
             var prfssrs = new List<SelectListItem>();
-            var trms = new List<SelectListItem>();
+            var trmsClas = new List<SelectListItem>();
             var trns = new List<SelectListItem>();
 
+            //filtrando os resultados
+            if (disciplinasProf != null &&  turmasClasse != null)
+            {
+                
+                    aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinasProf && x.classeTurmaFK == turmasClasse).ToList();
+                    
+                    
+            }
+
+            if (aloPA == null)
+            {
+                aloPA = db.Alocacao_Aluno_Professor.ToList();
+            }
+            //fim do filtro
 
             //incluindo elementos nas droplists
-            foreach (var prof in db.Professors.ToList())
+             foreach (var disc in db.Disciplina_Professor.ToList())
             {
-                prfssrs.Add(new SelectListItem { Value = prof.Professor_id.ToString(), Text = prof.nome });
+                dscplnsProf.Add(new SelectListItem { Value = disc.DisciplinaProfessor_id.ToString(), Text = disc.Professor.nome+" - "+disc.Disciplina.designacao });
             }
 
-            foreach (var disc in db.Disciplinas.ToList())
+            foreach (var turma in db.Classe_Turma.ToList())
             {
-                dscplns.Add(new SelectListItem { Value = disc.Disciplina_id.ToString(), Text = disc.designacao });
+                trmsClas.Add(new SelectListItem { Value = turma.ClasseTurma_id.ToString(), Text = turma.Classe.designacao+" - Turma "+turma.Turma.designacao+" - "+turma.Seccao.designacao+" - "+turma.Turno.designacao});
             }
+            //fim da inclusao de elementos nas dropdownlists
 
-            foreach (var turma in db.Turmas.ToList())
-            {
-                trms.Add(new SelectListItem { Value = turma.Turma_id.ToString(), Text = turma.designacao });
-            }
-
-            foreach (var turno in db.Turnoes.ToList())
-            {
-                trns.Add(new SelectListItem { Value = turno.Turno_id.ToString(), Text = turno.designacao });
-            }
-
+            //populando o view model da AvaliacaoView
             AvaliacaoViewModel avaliacaoVM = new AvaliacaoViewModel
             {
-                AlunoProfessor = alocacao_Aluno_Professor.ToList(),
+                AlunoProfessor = aloPA,
                 Avaliacoes = avaliacaos.ToList(),
-                MediaTrimestral = new MediaTrimestral(15, 2),
-                disciplinas = dscplns,
-                turnos = trns,
-                turmas = trms,
-                professores = prfssrs
-            };
-
+                MediaTrimestral = new MediaTrimestral(),
+                
+                //dropdownlists para filtros
+                disciplinas = dscplnsProf,
+                turmas = trmsClas,
+                };
+            //droplists pra filtros
             return View(avaliacaoVM);
         }
+        //fim da populacao do view model
 
         [HttpPost]
         public ActionResult editarAvaliacoes(int id, string propertyName, string value)

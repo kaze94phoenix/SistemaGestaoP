@@ -13,40 +13,20 @@
 <p>
     @Html.ActionLink("Criar Avaliacao", "gerarAvaliacao")
 </p>
+@using (Html.BeginForm("avaliacoesView", "Avaliacaos", FormMethod.Get))
+{
+    <div class="col-md-6 form-group">
+   @Html.DropDownList("disciplinasProf", Model.disciplinas)
+</div>
 
-<div class="col-md-3 form-group">
-    <select class="form-control m-b-10">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-    </select>
-</div>
-<div class="col-md-3 form-group">
-    <select class="form-control m-b-10">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-    </select>
-</div>
-<div class="col-md-3 form-group">
-    <select class="form-control m-b-10">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-    </select>
-</div>
-<div class="col-md-3 form-group">
-    <select class="form-control m-b-10">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-    </select>
+<div class="col-md-6 form-group">
+    @Html.DropDownList("turmasClasse", Model.turmas)
 </div>
 
 <div class="col-md-3 form-group">
     <button type="submit" class="btn btn-info">Submit</button>
 </div>
-
+}
 <table class="table">
     <tr>
         <th>
@@ -65,8 +45,8 @@
             AS2
         </th>
     </tr>
-
-    @foreach (var aluno in Model.AlunoProfessor)
+    @if (Model.AlunoProfessor!=null) {
+    foreach (var aluno in Model.AlunoProfessor)
     {
         <tr>
             <td>
@@ -95,10 +75,11 @@
 
             <td>
                 
-                @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id,1)
+                @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 1)
             </td>
             
         </tr>
+    }
     }
 
 </table>

@@ -12,6 +12,8 @@ namespace SistemaGestaoP
 
             bundles.Add(new ScriptBundle("~/bundles/select2").Include(
                         "~/Scripts/select2.min.js"));
+            bundles.Add(new StyleBundle("~/bundles/select2css").Include(
+                        "~/Content/select2.min.css"));
             // bundles.
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.min.js"));
@@ -64,7 +66,6 @@ namespace SistemaGestaoP
  "~/Content/iCheck/minimal/_all.css",
  "~/Content/iCheck/polaris/polaris.css",
  "~/Content/iCheck/square/_all.css",
- "~/Content/select2.min.css",
  "~/Content/",
  "~/Content/",
  "~/Content/",

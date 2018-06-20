@@ -16,11 +16,15 @@
 @using (Html.BeginForm("avaliacoesView", "Avaliacaos", FormMethod.Get))
 {
     <div class="col-md-6 form-group">
-   @Html.DropDownList("disciplinasProf", Model.disciplinas)
+   @*@Html.DropDownList("disciplinas", Model.disciplinas, htmlAttributes: new { @class="Disciplinas" })*@
+        <select name="disciplinas" class="Disciplinas" style="width:400px">
+            
+        </select>
 </div>
 
 <div class="col-md-6 form-group">
-    @Html.DropDownList("turmasClasse", Model.turmas)
+    @*@Html.DropDownList("turmas", Model.turmas, htmlAttributes: new { @class="Turmas" })*@
+    <select name="turmas" class="Turmas" style="width:400px"></select>
 </div>
 
 <div class="col-md-3 form-group">
@@ -90,6 +94,7 @@
 <script>
 
     $(document).ready(function () {
+    //edicao de notas
         var oldValue = '';
         $('.edit').editable('/Avaliacaos/editarAvaliacoes/',{
             cssclass: 'jeditForm',
@@ -114,8 +119,49 @@
                 }
             }
         })
+        //fim da edicao de notas
 
-        }
+        //Filtro em dropdownlist para as avaliacoes
+        $(".Disciplinas").select2({
+            placeholder: "Professor - Disciplina",
+            ajax: {
+                url: "/Disciplina_Professor/getDisciplinaProfessores",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        termo: params.term
+                    };
+                },
+                processResults: function (data,params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        })
+
+        $(".Turmas").select2({
+            placeholder: "Turma",
+            ajax: {
+                url: "/Classe_Turma/getClasseTurmas",
+                dataType: "json",
+                data: function (params) {
+                   var disciplina = $(".Disciplinas").val();
+                    return {
+                        termo: params.term+","+disciplina
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        })
+        //Fim do filtro
+
+    }
+    
     )
 
 </script>

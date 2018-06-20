@@ -132,5 +132,27 @@ namespace SistemaGestaoP.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        //lista de disciplinas-professor para select dropdown
+        public JsonResult getDisciplinaProfessores(string termo)
+        {
+            var listaDiscProf = new List<Disciplina_Professor>();
+
+            if (termo!=null)
+            {
+                listaDiscProf = db.Disciplina_Professor.Where(x=>x.Disciplina.designacao.Contains(termo) || x.Professor.nome.Contains(termo)).ToList();
+            }
+
+            var dados = listaDiscProf.Select(x => new
+            {
+                id = x.DisciplinaProfessor_id,
+                text = x.Professor.nome+" - "+x.Disciplina.designacao
+            }
+            );
+
+            return Json(dados, JsonRequestBehavior.AllowGet);
+        }
+        //fim da lista
     }
 }

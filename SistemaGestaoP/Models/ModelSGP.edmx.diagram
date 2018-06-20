@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="SGPModel.Classe" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SGPModel.Classe_Turma" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SGPModel.Disciplina" Width="1.5" PointX="3.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SGPModel.Disciplina_Professor" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGPModel.Disciplina_Professor" Width="2.125" PointX="6" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SGPModel.Endereco" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SGPModel.Genero" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SGPModel.Papel" Width="1.5" PointX="1.5" PointY="25" IsExpanded="true" />

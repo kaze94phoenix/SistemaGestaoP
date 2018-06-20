@@ -140,5 +140,46 @@ namespace SistemaGestaoP.Controllers
             }
             base.Dispose(disposing);
         }
+        //lista para dropdownlist nas avaliacoes tendo em conta a disciplina que o professor lecciona
+        public JsonResult getClasseTurmas(string termo)
+        {
+            var listaTermo = termo.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList(); //recebe dois termos [chavePesquisa,idDisciplinaProfessor]
+            var pPhave = listaTermo.First(); //chave de pesquisa
+            var listaClasseTurma = new List<Classe_Turma>(); //lista de dados
+            
+
+            if (listaTermo.Last() != "null")
+            {
+                var disc = Int32.Parse(listaTermo.Last()); //convertendo idDisciplina em int
+
+                var temp = db.Alocacao_Professor_Turma.Where(x => x.displinaProfessorFK == disc); //colhendo as turmas leccionadas pelo professor e numa disciplina escolhida
+                var temp2 = new List<Classe_Turma>();
+
+                foreach (var t in temp)
+                {
+                    temp2.Add(t.Classe_Turma); // conhendo somente as turmas
+                }
+
+
+
+                if (pPhave != null)
+                {
+                    //Filtrando as turmas usando a chave de pesquisa
+                    listaClasseTurma = temp2.Where(x => x.Classe.designacao.Contains(pPhave) || x.Seccao.designacao.Contains(pPhave)).ToList();
+                }
+            }
+
+            var dados = listaClasseTurma.Select(x => new
+            {
+                id = x.ClasseTurma_id, //valor de cada elemento do dropdownlist
+                text = x.Classe.designacao +" - Turma "+ x.Turma.designacao+ " - " + x.Seccao.designacao+" - "+x.Turno.designacao //texto de cada elemento do dropdownlist
+            }
+            );
+
+            return Json(dados, JsonRequestBehavior.AllowGet);
+
+
+        }
+        //Fim da lista
     }
 }

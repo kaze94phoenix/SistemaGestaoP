@@ -177,7 +177,7 @@ namespace SistemaGestaoP.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult avaliacoesView(int? disciplinasProf, int? turmasClasse)
+        public ActionResult avaliacoesView(int? disciplinas, int? turmas)
         {
             var aloPA = new List<Alocacao_Aluno_Professor>();
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
@@ -188,10 +188,10 @@ namespace SistemaGestaoP.Controllers
             var trns = new List<SelectListItem>();
 
             //filtrando os resultados
-            if (disciplinasProf != null &&  turmasClasse != null)
+            if (disciplinas != null &&  turmas != null)
             {
                 
-                    aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinasProf && x.classeTurmaFK == turmasClasse).ToList();
+                    aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
                     
                     
             }

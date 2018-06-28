@@ -10,6 +10,9 @@ namespace SistemaGestaoP.Models
     {
         public int tipoAvaliacao { set; get; }
         public int trimestre { set; get; }
+
+        public int ACs { set; get; }
+        public int ASs { set; get; }
         public int disciplinaProfessor { set; get; }
         public int classeTurma {set; get;}
         public int anoLectivo { set; get; }
@@ -17,9 +20,7 @@ namespace SistemaGestaoP.Models
         public List<Alocacao_Aluno_Professor> AlunoProfessor { set; get; }
         public MediaTrimestral MediaTrimestral { set; get; }
 
-        public IEnumerable<SelectListItem> turmas { set; get; }
-
-        public IEnumerable<SelectListItem> disciplinas { set; get; }
+        
 
         
         

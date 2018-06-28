@@ -13,6 +13,9 @@
 <p>
     @Html.ActionLink("Criar Avaliacao", "gerarAvaliacao")
 </p>
+@if (Model.AlunoProfessor.Count()!=0){
+<div><a href="@Url.Action("DownloadViewPDF", "Avaliacaos", new { disciplinas = Model.AlunoProfessor.First().disciplinaProfessorFK, turmas = Model.AlunoProfessor.First().classeTurmaFK })">Download ViewAsPdf</a></div>
+}
 @using (Html.BeginForm("avaliacoesView", "Avaliacaos", FormMethod.Get))
 {
     <div class="col-md-6 form-group">
@@ -28,7 +31,7 @@
 </div>
 
 <div class="col-md-3 form-group">
-    <button type="submit" class="btn btn-info">Submit</button>
+    <button type="submit" class="btn btn-info">Filtrar</button>
 </div>
 }
 <table class="table">
@@ -36,17 +39,22 @@
         <th>
             Aluno
         </th>
+        @for(int i=1; i<=@Model.ACs; i++) { 
         <th>
-            AC1
+            AC @i
         </th>
+        }
         <th>
-            AC2
+            MAC
         </th>
+        @for (int i = 1; i <= @Model.ASs; i++)
+        {
+            <th>
+                AS @i
+            </th>
+        }
         <th>
-            AS1
-        </th>
-        <th>
-            AS2
+            MAS
         </th>
     </tr>
     @if (Model.AlunoProfessor!=null) {
@@ -58,17 +66,7 @@
             </td>
             @foreach (var avaliacao in Model.Avaliacoes)
             {
-                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1)
-                {
-                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
-                        @Html.DisplayFor(modelItem => avaliacao.nota)
-                    </td>
-                }
-
-            }
-            @foreach (var avaliacao in Model.Avaliacoes)
-            {
-                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2)
+                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK==1)
                 {
                     <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
                         @Html.DisplayFor(modelItem => avaliacao.nota)
@@ -78,9 +76,24 @@
             }
 
             <td>
-                
                 @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 1)
             </td>
+
+            @foreach (var avaliacao in Model.Avaliacoes)
+            {
+                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 1)
+                {
+                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                        @Html.DisplayFor(modelItem => avaliacao.nota)
+                    </td>
+                }
+
+            }
+            <td>
+                @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 1)
+            </td>
+
+            
             
         </tr>
     }

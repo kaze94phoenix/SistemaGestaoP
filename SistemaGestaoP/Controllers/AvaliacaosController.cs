@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using SistemaGestaoP.Models;
 using Newtonsoft.Json.Linq;
+using Rotativa.MVC;
 //using SistemaGestaoP.ViewModels;
 
 namespace SistemaGestaoP.Controllers
@@ -182,18 +181,29 @@ namespace SistemaGestaoP.Controllers
             var aloPA = new List<Alocacao_Aluno_Professor>();
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
             var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
-            var dscplnsProf = new List<SelectListItem>();
-            var prfssrs = new List<SelectListItem>();
-            var trmsClas = new List<SelectListItem>();
-            var trns = new List<SelectListItem>();
-
+            int aCs = 0;
+            int aSs = 0;
             //filtrando os resultados
             if (disciplinas != null &&  turmas != null)
             {
                 
-                    aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
-                    
-                    
+                aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
+                foreach (var a in avaliacaos)
+                {
+                    if (a.alocacaoAlunoProfessorFK==aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK==1)
+                    {
+                        aCs++;
+                    }
+                }
+
+                foreach (var a in avaliacaos)
+                {
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2)
+                    {
+                        aSs++;
+                    }
+                }
+
             }
 
             if (aloPA == null)
@@ -202,17 +212,7 @@ namespace SistemaGestaoP.Controllers
             }
             //fim do filtro
 
-            //incluindo elementos nas droplists
-             foreach (var disc in db.Disciplina_Professor.ToList())
-            {
-                dscplnsProf.Add(new SelectListItem { Value = disc.DisciplinaProfessor_id.ToString(), Text = disc.Professor.nome+" - "+disc.Disciplina.designacao });
-            }
-
-            foreach (var turma in db.Classe_Turma.ToList())
-            {
-                trmsClas.Add(new SelectListItem { Value = turma.ClasseTurma_id.ToString(), Text = turma.Classe.designacao+" - Turma "+turma.Turma.designacao+" - "+turma.Seccao.designacao+" - "+turma.Turno.designacao});
-            }
-            //fim da inclusao de elementos nas dropdownlists
+           
 
             //populando o view model da AvaliacaoView
             AvaliacaoViewModel avaliacaoVM = new AvaliacaoViewModel
@@ -220,11 +220,13 @@ namespace SistemaGestaoP.Controllers
                 AlunoProfessor = aloPA,
                 Avaliacoes = avaliacaos.ToList(),
                 MediaTrimestral = new MediaTrimestral(),
+                ACs = aCs,
+                ASs = aSs,
                 
-                //dropdownlists para filtros
-                disciplinas = dscplnsProf,
-                turmas = trmsClas,
-                };
+                
+            //dropdownlists para filtros
+
+        };
             //droplists pra filtros
             return View(avaliacaoVM);
         }
@@ -253,6 +255,65 @@ namespace SistemaGestaoP.Controllers
 
 
         }
+
+
+        public ActionResult gerarPauta(AvaliacaoViewModel model)
+        {
+            
+            return View(model);
+        }
+
+        public ActionResult DownloadViewPDF(int? turmas, int? disciplinas)
+        {
+            var aloPA = new List<Alocacao_Aluno_Professor>();
+            var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
+            var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
+            int aCs = 0;
+            int aSs = 0;
+            //filtrando os resultados
+            if (disciplinas != null && turmas != null)
+            {
+
+                aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
+                foreach (var a in avaliacaos)
+                {
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1)
+                    {
+                        aCs++;
+                    }
+                }
+
+                foreach (var a in avaliacaos)
+                {
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2)
+                    {
+                        aSs++;
+                    }
+                }
+
+            }
+
+            if (aloPA == null)
+            {
+                aloPA = db.Alocacao_Aluno_Professor.ToList();
+            }
+            //fim do filtro
+
+
+
+            //populando o view model da AvaliacaoView
+            AvaliacaoViewModel avaliacaoVM = new AvaliacaoViewModel
+            {
+                AlunoProfessor = aloPA,
+                Avaliacoes = avaliacaos.ToList(),
+                MediaTrimestral = new MediaTrimestral(),
+                ACs = aCs,
+                ASs = aSs
+                //dropdownlists para filtros
+
+            };            //Code to get content
+            return new ViewAsPdf("gerarPauta", avaliacaoVM) { FileName = "TestViewAsPdf.pdf" };
+}
 
     }
 }

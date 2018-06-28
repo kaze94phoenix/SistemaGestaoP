@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "~/Views/Shared/_pautaPDF.cshtml";
+}
+
+@model SistemaGestaoP.Models.AvaliacaoViewModel
+
+
+<table class="table">
+    <tr>
+        <th>
+            Aluno
+        </th>
+        @for (int i = 1; i <= @Model.ACs; i++)
+        {
+            <th>
+                AC @i
+            </th>
+        }
+        <th>
+            MAC
+        </th>
+        @for (int i = 1; i <= @Model.ASs; i++)
+        {
+            <th>
+                AS @i
+            </th>
+        }
+        <th>
+            MAS
+        </th>
+    </tr>
+    @if (Model.AlunoProfessor != null)
+    {
+        foreach (var aluno in Model.AlunoProfessor)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => aluno.Aluno.nome)
+                </td>
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 1)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 1)
+                </td>
+
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 1)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 1)
+                </td>
+
+
+
+            </tr>
+        }
+    }
+
+</table>
+
+
+
+
+
+

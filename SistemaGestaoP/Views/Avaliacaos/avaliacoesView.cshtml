@@ -30,155 +30,338 @@
     <select name="turmas" class="Turmas" style="width:400px"></select>
 </div>
 
-<div class="col-md-3 form-group">
+<div class="col-md-1 form-group">
     <button type="submit" class="btn btn-info">Filtrar</button>
 </div>
 }
-<table class="table">
-    <tr>
-        <th>
-            Aluno
-        </th>
-        @for(int i=1; i<=@Model.ACs; i++) { 
-        <th>
-            AC @i
-        </th>
-        }
-        <th>
-            MAC
-        </th>
-        @for (int i = 1; i <= @Model.ASs; i++)
-        {
-            <th>
-                AS @i
-            </th>
-        }
-        <th>
-            MAS
-        </th>
-    </tr>
-    @if (Model.AlunoProfessor!=null) {
-    foreach (var aluno in Model.AlunoProfessor)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => aluno.Aluno.nome)
-            </td>
-            @foreach (var avaliacao in Model.Avaliacoes)
-            {
-                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK==1)
-                {
-                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
-                        @Html.DisplayFor(modelItem => avaliacao.nota)
-                    </td>
-                }
+<div class="row">
+<div class="col-md-12 form-group">
+    <section class="panel general">
+        <header class="panel-heading tab-bg-dark-navy-blue">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-toggle="tab" href="#trimestre1">I Trimestre</a>
+                </li>
+                <li class="">
+                    <a data-toggle="tab" href="#trimestre2">II Trimestre</a>
+                </li>
+                <li class="">
+                    <a data-toggle="tab" href="#trimestre3">III Trimestre</a>
+                </li>
+            </ul>
+        </header>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="trimestre1" class="tab-pane active">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Aluno
+                            </th>
+                            @for (int i = 1; i <= @Model.ACs; i++)
+                            {
+                                <th>
+                                    AC @i
+                                </th>
+                            }
+                            <th>
+                                MAC
+                            </th>
+                            @for (int i = 1; i <= @Model.ASs; i++)
+                            {
+                                <th>
+                                    AS @i
+                                </th>
+                            }
+                            <th>
+                                MAS
+                            </th>
+                            <th>
+                                APT
+                            </th>
+                        </tr>
+                        @if (Model.AlunoProfessor != null)
+                        {
+                            foreach (var aluno in Model.AlunoProfessor)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => aluno.Aluno.nome)
+                                    </td>
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 1)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 1)
+                                    </td>
+
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 1)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 1)
+                                    </td>
+                                    <td>
+                                        @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 1)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                </div>
+                <div id="trimestre2" class="tab-pane">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Aluno
+                            </th>
+                            @for (int i = 1; i <= @Model.ACs2; i++)
+                            {
+                                <th>
+                                    AC @i
+                                </th>
+                            }
+                            <th>
+                                MAC
+                            </th>
+                            @for (int i = 1; i <= @Model.ASs2; i++)
+                            {
+                                <th>
+                                    AS @i
+                                </th>
+                            }
+                            <th>
+                                MAS
+                            </th>
+                            <th>
+                                APT
+                            </th>
+                        </tr>
+                        @if (Model.AlunoProfessor != null)
+                        {
+                            foreach (var aluno in Model.AlunoProfessor)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => aluno.Aluno.nome)
+                                    </td>
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 2)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 2)
+                                    </td>
+
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 2)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 2)
+                                    </td>
+                                    <td>
+                                        @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 2)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                </div>
+                <div id="trimestre3" class="tab-pane">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Aluno
+                            </th>
+                            @for (int i = 1; i <= @Model.ACs3; i++)
+                            {
+                                <th>
+                                    AC @i
+                                </th>
+                            }
+                            <th>
+                                MAC
+                            </th>
+                            @for (int i = 1; i <= @Model.ASs3; i++)
+                            {
+                                <th>
+                                    AS @i
+                                </th>
+                            }
+                            <th>
+                                MAS
+                            </th>
+                            <th>
+                                APT
+                            </th>
+                        </tr>
+                        @if (Model.AlunoProfessor != null)
+                        {
+                            foreach (var aluno in Model.AlunoProfessor)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => aluno.Aluno.nome)
+                                    </td>
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 3)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 3)
+                                    </td>
+
+                                    @foreach (var avaliacao in Model.Avaliacoes)
+                                    {
+                                        if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 3)
+                                        {
+                                            <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                                                @Html.DisplayFor(modelItem => avaliacao.nota)
+                                            </td>
+                                        }
+
+                                    }
+                                    <td>
+                                        @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 3)
+                                    </td>
+                                    <td>
+                                        @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 3)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </div>
+    <div>
+    @section Scripts {
+        @*<script src="https://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>*@
+        @Scripts.Render("~/bundles/select2")
+        @Scripts.Render("~/bundles/jeditable")
+        <script>
+
+            $(document).ready(function () {
+                //edicao de notas
+                var oldValue = '';
+                $('.edit').editable('/Avaliacaos/editarAvaliacoes/', {
+                    cssclass: 'jeditForm',
+                    tooltip: 'edite as notas',
+                    width: 'none',
+                    height: 'none',
+                    onsubmit: function (settings, original) {
+                        oldValue = original.revert;
+                    },
+                    submitdata: function () {
+                        return {
+                            id: $(this).data('id'),
+                            PropertyName: $(this).data('propertyname')
+                        }
+                    },
+                    callback: function (value, settings) {
+                        var jsonData = $.parseJSON(value);
+                        if (jsonData.status) {
+                            $(this).text(jsonData.value);
+                        } else {
+                            $(this).text(oldValue);
+                        }
+                    }
+                })
+                //fim da edicao de notas
+
+                //Filtro em dropdownlist para as avaliacoes
+                $(".Disciplinas").select2({
+                    placeholder: "Professor - Disciplina",
+                    ajax: {
+                        url: "/Disciplina_Professor/getDisciplinaProfessores",
+                        dataType: "json",
+                        data: function (params) {
+                            return {
+                                termo: params.term
+                            };
+                        },
+                        processResults: function (data, params) {
+                            return {
+                                results: data
+                            };
+                        }
+                    }
+                })
+
+                $(".Turmas").select2({
+                    placeholder: "Turma",
+                    ajax: {
+                        url: "/Classe_Turma/getClasseTurmas",
+                        dataType: "json",
+                        data: function (params) {
+                            var disciplina = $(".Disciplinas").val();
+                            return {
+                                termo: params.term + "," + disciplina
+                            };
+                        },
+                        processResults: function (data, params) {
+                            return {
+                                results: data
+                            };
+                        }
+                    }
+                })
+                //Fim do filtro
 
             }
 
-            <td>
-                @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 1)
-            </td>
+            )
 
-            @foreach (var avaliacao in Model.Avaliacoes)
-            {
-                if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 1)
-                {
-                    <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
-                        @Html.DisplayFor(modelItem => avaliacao.nota)
-                    </td>
-                }
-
-            }
-            <td>
-                @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 1)
-            </td>
-
-            
-            
-        </tr>
+        </script>
     }
-    }
-
-</table>
-@section Scripts {
-    @*<script src="https://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>*@
-    @Scripts.Render("~/bundles/select2")
-    @Scripts.Render("~/bundles/jeditable")
-<script>
-
-    $(document).ready(function () {
-    //edicao de notas
-        var oldValue = '';
-        $('.edit').editable('/Avaliacaos/editarAvaliacoes/',{
-            cssclass: 'jeditForm',
-            tooltip: 'edite as notas',
-            width: 'none',
-            height: 'none',
-            onsubmit: function (settings, original) {
-                oldValue = original.revert;
-            },
-            submitdata: function () {
-                return {
-                    id: $(this).data('id'),
-                    PropertyName: $(this).data('propertyname')
-                }
-            },
-            callback: function (value, settings) {
-                var jsonData = $.parseJSON(value);
-                if (jsonData.status) {
-                    $(this).text(jsonData.value);
-                } else {
-                    $(this).text(oldValue);
-                }
-            }
-        })
-        //fim da edicao de notas
-
-        //Filtro em dropdownlist para as avaliacoes
-        $(".Disciplinas").select2({
-            placeholder: "Professor - Disciplina",
-            ajax: {
-                url: "/Disciplina_Professor/getDisciplinaProfessores",
-                dataType: "json",
-                data: function (params) {
-                    return {
-                        termo: params.term
-                    };
-                },
-                processResults: function (data,params) {
-                    return {
-                        results: data
-                    };
-                }
-            }
-        })
-
-        $(".Turmas").select2({
-            placeholder: "Turma",
-            ajax: {
-                url: "/Classe_Turma/getClasseTurmas",
-                dataType: "json",
-                data: function (params) {
-                   var disciplina = $(".Disciplinas").val();
-                    return {
-                        termo: params.term+","+disciplina
-                    };
-                },
-                processResults: function (data, params) {
-                    return {
-                        results: data
-                    };
-                }
-            }
-        })
-        //Fim do filtro
-
-    }
-    
-    )
-
-</script>
-}
 
 
 

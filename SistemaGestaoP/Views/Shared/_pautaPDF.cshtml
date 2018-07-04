@@ -3,6 +3,17 @@
     <head>
         <title>@Page.Title</title>
         @RenderSection("head", required: false)
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+        </style>
     </head>
     <body>
         @RenderBody()

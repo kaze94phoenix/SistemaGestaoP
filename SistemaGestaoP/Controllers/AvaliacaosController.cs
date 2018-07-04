@@ -181,8 +181,8 @@ namespace SistemaGestaoP.Controllers
             var aloPA = new List<Alocacao_Aluno_Professor>();
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
             var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
-            int aCs = 0;
-            int aSs = 0;
+            int aCs = 0; int aCs2 = 0; int aCs3 = 0;
+            int aSs = 0; int aSs2 = 0; int aSs3 = 0;
             //filtrando os resultados
             if (disciplinas != null &&  turmas != null)
             {
@@ -190,19 +190,44 @@ namespace SistemaGestaoP.Controllers
                 aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
                 foreach (var a in avaliacaos)
                 {
-                    if (a.alocacaoAlunoProfessorFK==aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK==1)
+                    if (a.alocacaoAlunoProfessorFK==aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK==1 && a.trimestreFK==1)
                     {
                         aCs++;
                     }
-                }
 
-                foreach (var a in avaliacaos)
-                {
-                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2)
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK==1)
                     {
                         aSs++;
                     }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1 && a.trimestreFK == 2)
+                    {
+                        aCs2++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK == 2)
+                    {
+                        aSs2++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1 && a.trimestreFK == 3)
+                    {
+                        aCs3++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK == 3)
+                    {
+                        aSs3++;
+                    }
                 }
+
+                //foreach (var a in avaliacaos)
+                //{
+                //    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2)
+                //    {
+                //        aSs++;
+                //    }
+                //}
 
             }
 
@@ -222,6 +247,10 @@ namespace SistemaGestaoP.Controllers
                 MediaTrimestral = new MediaTrimestral(),
                 ACs = aCs,
                 ASs = aSs,
+                ACs2 = aCs2,
+                ASs2 = aSs2,
+                ACs3 = aCs3,
+                ASs3 = aSs3
                 
                 
             //dropdownlists para filtros
@@ -268,8 +297,8 @@ namespace SistemaGestaoP.Controllers
             var aloPA = new List<Alocacao_Aluno_Professor>();
             var avaliacaos = db.Avaliacaos.Include(a => a.Alocacao_Aluno_Professor).Include(a => a.Tipo_Avaliacao).Include(a => a.Trimestre);
             var alocacao_Aluno_Professor = db.Alocacao_Aluno_Professor.Include(a => a.Aluno).Include(a => a.Classe_Turma).Include(a => a.Disciplina_Professor);
-            int aCs = 0;
-            int aSs = 0;
+            int aCs = 0; int aCs2 = 0; int aCs3 = 0;
+            int aSs = 0; int aSs2 = 0; int aSs3 = 0;
             //filtrando os resultados
             if (disciplinas != null && turmas != null)
             {
@@ -277,19 +306,38 @@ namespace SistemaGestaoP.Controllers
                 aloPA = db.Alocacao_Aluno_Professor.Where(x => x.disciplinaProfessorFK == disciplinas && x.classeTurmaFK == turmas).ToList();
                 foreach (var a in avaliacaos)
                 {
-                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1)
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1 && a.trimestreFK == 1)
                     {
                         aCs++;
                     }
-                }
 
-                foreach (var a in avaliacaos)
-                {
-                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2)
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK == 1)
                     {
                         aSs++;
                     }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1 && a.trimestreFK == 2)
+                    {
+                        aCs2++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK == 2)
+                    {
+                        aSs2++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 1 && a.trimestreFK == 3)
+                    {
+                        aCs3++;
+                    }
+
+                    if (a.alocacaoAlunoProfessorFK == aloPA.First().Alocacao_Aluno_Professor_id && a.tipoAvaliacaoFK == 2 && a.trimestreFK == 3)
+                    {
+                        aSs3++;
+                    }
                 }
+
+               
 
             }
 
@@ -308,7 +356,11 @@ namespace SistemaGestaoP.Controllers
                 Avaliacoes = avaliacaos.ToList(),
                 MediaTrimestral = new MediaTrimestral(),
                 ACs = aCs,
-                ASs = aSs
+                ASs = aSs,
+                ACs2 = aCs2,
+                ASs2 = aSs2,
+                ACs3 = aCs3, 
+                ASs3 = aSs3
                 //dropdownlists para filtros
 
             };            //Code to get content

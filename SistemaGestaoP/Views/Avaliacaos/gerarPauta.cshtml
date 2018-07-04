@@ -7,9 +7,20 @@
 
 <table class="table">
     <tr>
-        <th>
+        <th rowspan="2">
             Aluno
         </th>
+        <th style="text-align:center" colspan=@(Model.ACs+Model.ASs+3)>
+            I Trimestre
+        </th>
+        <th style="text-align:center" colspan=@(Model.ACs2+Model.ASs2+3)>
+            II Trimestre
+        </th>
+        <th style="text-align:center" colspan=@(Model.ACs3+Model.ASs3+3)>
+            III Trimestre
+        </th>
+    </tr>
+    <tr>
         @for (int i = 1; i <= @Model.ACs; i++)
         {
             <th>
@@ -27,6 +38,50 @@
         }
         <th>
             MAS
+        </th>
+        <th>
+            APT
+        </th>
+        @for (int i = 1; i <= @Model.ACs2; i++)
+        {
+            <th>
+                AC @i
+            </th>
+        }
+        <th>
+            MAC
+        </th>
+        @for (int i = 1; i <= @Model.ASs2; i++)
+        {
+            <th>
+                AS @i
+            </th>
+        }
+        <th>
+            MAS
+        </th>
+        <th>
+            APT
+        </th>@for (int i = 1; i <= @Model.ACs3; i++)
+        {
+            <th>
+                AC @i
+            </th>
+        }
+        <th>
+            MAC
+        </th>
+        @for (int i = 1; i <= @Model.ASs3; i++)
+        {
+            <th>
+                AS @i
+            </th>
+        }
+        <th>
+            MAS 
+        </th>
+        <th>
+            APT
         </th>
     </tr>
     @if (Model.AlunoProfessor != null)
@@ -65,6 +120,74 @@
                 <td>
                     @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 1)
                 </td>
+                <td>
+                    @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 1)
+                </td>
+
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 2)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 2)
+                </td>
+
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 2)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 2)
+                </td>
+                <td>
+                    @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 2)
+                </td>
+
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 1 && avaliacao.trimestreFK == 3)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoContinua(aluno.Alocacao_Aluno_Professor_id, 3)
+                </td>
+
+                @foreach (var avaliacao in Model.Avaliacoes)
+                {
+                    if (aluno.Alocacao_Aluno_Professor_id == avaliacao.alocacaoAlunoProfessorFK && avaliacao.tipoAvaliacaoFK == 2 && avaliacao.trimestreFK == 3)
+                    {
+                        <td class="edit" data-id="@avaliacao.Avaliacao_id" data-propertyname="nota">
+                            @Html.DisplayFor(modelItem => avaliacao.nota)
+                        </td>
+                    }
+
+                }
+                <td>
+                    @Model.MediaTrimestral.mediaAvaliacaoSistematica(aluno.Alocacao_Aluno_Professor_id, 3)
+                </td>
+                <td>
+                    @Model.MediaTrimestral.avaliacaoPeriodicaTrimestral(aluno.Alocacao_Aluno_Professor_id, 3)
+                </td>
+
 
 
 

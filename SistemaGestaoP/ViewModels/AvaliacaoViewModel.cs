@@ -12,7 +12,13 @@ namespace SistemaGestaoP.Models
         public int trimestre { set; get; }
 
         public int ACs { set; get; }
+
+        public int ACs2 { set; get; }
+
+        public int ACs3 { set; get; }
         public int ASs { set; get; }
+        public int ASs2 { set; get; }
+        public int ASs3 { set; get; }
         public int disciplinaProfessor { set; get; }
         public int classeTurma {set; get;}
         public int anoLectivo { set; get; }

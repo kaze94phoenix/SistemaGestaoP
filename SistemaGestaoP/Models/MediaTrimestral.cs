@@ -131,7 +131,8 @@ namespace SistemaGestaoP.Models
 
         }
 
-        public float? mediaTrimestral()
+
+        public float? avaliacaoPeriodicaTrimestral(int alunoProfessor, int trimestr)
         {
             float? avaliacaoPeriodicaTrimestral = 0;
             //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
@@ -143,7 +144,31 @@ namespace SistemaGestaoP.Models
                 }
 
             }
-            return ((2 * mediaAvaliacaoSistematica()) + avaliacaoPeriodicaTrimestral) / 3;
+
+            return avaliacaoPeriodicaTrimestral;
+        }
+
+
+        public float? avaliacaoPeriodicaTrimestral()
+        {
+            float? avaliacaoPeriodicaTrimestral = 0;
+            //busca das avaliacoes tendo como chave a alocacao aluno_professor, o trimestre, e tipo de avaliacao
+            foreach (Avaliacao ava in db.Avaliacaos)
+            {
+                if (ava.tipoAvaliacaoFK == 3 && ava.trimestreFK == trimestre && ava.alocacaoAlunoProfessorFK == alunoProfessor)
+                {
+                    avaliacaoPeriodicaTrimestral = ava.nota;
+                }
+
+            }
+
+            return avaliacaoPeriodicaTrimestral;
+        }
+
+        public float? mediaTrimestral()
+        {
+            
+            return ((2 * mediaAvaliacaoSistematica()) + avaliacaoPeriodicaTrimestral()) / 3;
 
         }
     }

@@ -33,8 +33,6 @@ namespace SistemaGestaoP
 "~/Scripts/Chart.min.js",
 "~/Scripts/daterangepicker.js",
 "~/Scripts/jekyll-search.min.js",
-"~/Scripts/jquery.js",
-"~/Scripts/jquery.min.js",
 "~/Scripts/jquery.slimscroll.js",
 "~/Scripts/jquery.slimscroll.min.js",
 "~/Scripts/jquery-jvectormap-2.0.3.min.js",
@@ -45,6 +43,16 @@ namespace SistemaGestaoP
 "~/Scripts/sleek.bundle.js",
 "~/Scripts/toastr.min.js",
 "~/Scripts/nprogress.js",
+"~/Scripts/bootstrap.bundle.js",
+"~/Scripts/bootstrap.bundle.min.js",
+"~/Scripts/bootstrap.js",
+"~/Scripts/bootstrap.min.js",
+"~/Scripts/popper.min.js",
+"~/Scripts/tether.min",
+"~/Scripts/",
+"~/Scripts/",
+"~/Scripts/",
+"~/Scripts/",
 "~/Scripts/",
 "~/Scripts/",
 "~/Scripts/",
@@ -62,6 +70,18 @@ namespace SistemaGestaoP
  "~/Content/styles.css",
  "~/Content/toastr.css",
  "~/Content/toastr.min.css",
+ "~/Content/bootstrap.css",
+ "~/Content/bootstrap.min.css",
+ "~/Content/bootstrap-grid.css",
+ "~/Content/bootstrap-grid.min.css",
+ "~/Content/bootstrap-reboot.css",
+ "~/Content/bootstrap-reboot.min.css",
+ "~/Content/",
+ "~/Content/",
+ "~/Content/",
+ "~/Content/",
+ "~/Content/",
+ "~/Content/",
  "~/Content/",
  "~/Content/",
  "~/Content/",
@@ -71,7 +91,7 @@ namespace SistemaGestaoP
  "~/Content/"
 ));
 
-           BundleTable.EnableOptimizations = false;
+           BundleTable.EnableOptimizations = true;
         }
     }
 }

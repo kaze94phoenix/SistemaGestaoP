@@ -216,6 +216,11 @@
       <DependentUpon>ModelSGP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MediaTrimestral.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AvaliacaoViewModel.cs" />
     <Compile Include="Models\Classe.cs">
       <DependentUpon>ModelSGP.tt</DependentUpon>
@@ -478,6 +483,10 @@
     <Content Include="Scripts\it.js" />
     <Content Include="Scripts\ja.js" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -599,7 +608,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layouts.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -721,7 +730,7 @@
     <Content Include="Scripts\phone-be.json" />
     <Content Include="Scripts\phone-codes.json" />
     <Content Include="Scripts\slimScroll.jquery.json" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Avaliacaos\gerarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacaos\avaliacoesView.cshtml" />
     <Content Include="Views\Shared\_pautaPDF.cshtml" />

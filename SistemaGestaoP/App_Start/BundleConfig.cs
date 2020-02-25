@@ -24,48 +24,45 @@ namespace SistemaGestaoP
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
+                        // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
             
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-"~/Scripts/bootstrap.js",
-"~/Scripts/bootstrap.min.js",
-"~/Scripts/Director/dashboard.js",
-"~/Scripts/plugins/chart.js",
-"~/Scripts/plugins/daterangepicker/daterangepicker.js",
-"~/Scripts/plugins/fullcalendar/fullcalendar.js",
-"~/Scripts/plugins/iCheck/icheck.min.js",
-"~/Scripts/Director/app.js",
+"~/Scripts/Chart.min.js",
+"~/Scripts/daterangepicker.js",
+"~/Scripts/jekyll-search.min.js",
+"~/Scripts/jquery.js",
+"~/Scripts/jquery.min.js",
+"~/Scripts/jquery.slimscroll.js",
+"~/Scripts/jquery.slimscroll.min.js",
+"~/Scripts/jquery-jvectormap-2.0.3.min.js",
+"~/Scripts/jquery-jvectormap-world-mill.js",
+"~/Scripts/jquery-migrate-1.4.1.min.js",
+"~/Scripts/jquery-ui-1.12.1.min.js",
+"~/Scripts/moment.min.js",
+"~/Scripts/sleek.bundle.js",
+"~/Scripts/toastr.min.js",
+"~/Scripts/nprogress.js",
+"~/Scripts/",
+"~/Scripts/",
 "~/Scripts/",
 "~/Scripts/"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-"~/Content/bootstrap.css",
-"~/Content/bootstrap.min.css",
-"~/Content/easypiechart.css",
-"~/Content/font-awesome.css",
-"~/Content/font-awesome.min.css",
-"~/Content/gmap.css",
-"~/Content/ionicons.css",
-"~/Content/ionicons.min.css",
-"~/Content/jquery-ui.min.css",
-"~/Content/jquery.ui.plupload.css",
-"~/Content/Site.css",
-"~/Content/style.css",
-"~/Content/throbber.gif",
- "~/Content/datepicker/datepicker3.css",
- "~/Content/daterangepicker/daterangepicker-bs3.css",
- "~/Content/iCheck/all.css",
- "~/Content/jvectormap/jquery-jvectormap-1.2.2.css",
- "~/Content/morris/morris.css",
- "~/Content/iCheck/flat/_all.css",
- "~/Content/iCheck/futurico/futurico.css",
- "~/Content/iCheck/line/_all.css",
- "~/Content/iCheck/minimal/_all.css",
- "~/Content/iCheck/polaris/polaris.css",
- "~/Content/iCheck/square/_all.css",
+ "~/Content/daterangepicker.css",
+ "~/Content/jquery-jvectormap-2.0.3.css",
+ "~/Content/jquery-ui-1.12.1.css",
+ "~/Content/nprogress.css",
+ "~/Content/sleek.css",
+ "~/Content/sleek.min.css",
+ "~/Content/sleek.css.map",
+ "~/Content/sleek.min.rtl.css",
+ "~/Content/styles.css",
+ "~/Content/toastr.css",
+ "~/Content/toastr.min.css",
+ "~/Content/",
  "~/Content/",
  "~/Content/",
  "~/Content/",
@@ -74,7 +71,7 @@ namespace SistemaGestaoP
  "~/Content/"
 ));
 
-           BundleTable.EnableOptimizations = true;
+           BundleTable.EnableOptimizations = false;
         }
     }
 }

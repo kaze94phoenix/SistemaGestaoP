@@ -48,7 +48,7 @@ namespace SistemaGestaoP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Professor_id,nome,bi,utilizadorFK")] Professor professor)
+        public ActionResult Create([Bind(Include = "Professor_id,nome,bi")] Professor professor)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace SistemaGestaoP.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome", professor.utilizadorFK);
+            ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome");
             return View(professor);
         }
 
@@ -127,6 +127,80 @@ namespace SistemaGestaoP.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult CriarProfessor()
+        {
+            ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome");
+            return View();
+        }
+
+
+
+
+        // POST: Professors/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CriarProfessor([Bind(Include = "Professor_id,nome,bi,utilizadorFK")] Professor professor)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Professors.Add(professor);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome", professor.utilizadorFK);
+            return View(professor);
+        }
+
+        public ActionResult actualizarUtilizadorProf()
+        {
+            var dbT = db.Database.BeginTransaction();
+            List<int> ids = new List<int>();
+            int idAlt = 0;
+
+                foreach (var upUP in db.Professors)
+                {
+
+                    if (upUP.utilizadorFK == null)
+                    {
+
+                        var username = upUP.nome.Split(' ');
+
+                        Utilizador user = new Utilizador();
+                        user.nome = upUP.nome;
+                        user.nomeUtilizador = username[0].ToLower() + "." + username[username.Length - 1].ToLower();
+                        db.Utilizadors.Add(user);
+                        idAlt++;
+
+
+                    }
+                }
+                db.SaveChanges();
+
+            for(int i=idAlt-1; i>=0; i--)
+            {
+                ids.Add(db.Utilizadors.ToList().Last().Utilizador_id - i);
+            }
+
+
+            foreach (var upUP in db.Professors)
+                {
+
+                    if (upUP.utilizadorFK == null)
+                    {
+                        upUP.utilizadorFK = ids.ElementAt(0);
+                        db.Entry(upUP).State = System.Data.Entity.EntityState.Modified;
+                        ids.RemoveAt(0);
+                    }
+                }
+                db.SaveChanges();
+            
+            dbT.Commit();
+            return RedirectToAction("CriarProfessor");
         }
     }
 }

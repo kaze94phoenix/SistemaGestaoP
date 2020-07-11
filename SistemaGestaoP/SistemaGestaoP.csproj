@@ -35,6 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -742,6 +743,7 @@
     <Content Include="Views\Shared\_pautaPDF.cshtml" />
     <Content Include="Views\Avaliacaos\gerarPauta.cshtml" />
     <Content Include="Views\Professors\CriarProfessor.cshtml" />
+    <Content Include="Views\Alunoes\CriarAluno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -61,6 +61,10 @@ namespace SistemaGestaoP.Controllers
             return View(aluno);
         }
 
+
+
+
+
         // GET: Alunoes/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -128,5 +132,94 @@ namespace SistemaGestaoP.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        public ActionResult CriarAluno
+            ()
+        {
+           // ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome");
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CriarAluno([Bind(Include = "Aluno_id,nome,bi,utilizadorFK")] Aluno aluno)
+        {
+            var dbT = db.Database.BeginTransaction();
+            if (ModelState.IsValid)
+            {
+                db.Alunoes.Add(aluno);
+                db.SaveChanges();
+                var username = aluno.nome.Split(' ');
+
+                Utilizador user = new Utilizador();
+                user.nome = aluno.nome;
+                user.nomeUtilizador = username[0].ToLower() + "." + username[username.Length - 1].ToLower();
+                user.papelFK = 3;
+                db.Utilizadors.Add(user);
+                db.SaveChanges();
+
+                aluno.utilizadorFK = user.Utilizador_id;
+                db.Entry(aluno).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                dbT.Commit();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.utilizadorFK = new SelectList(db.Utilizadors, "Utilizador_id", "nome", aluno.utilizadorFK);
+            return View();
+        }
+
+
+        public ActionResult actualizarUtilizadorAluno()
+        {
+            var dbT = db.Database.BeginTransaction();
+            List<int> ids = new List<int>();
+            int idAlt = 0;
+
+            foreach (var upUP in db.Alunoes)
+            {
+
+                if (upUP.utilizadorFK == null)
+                {
+
+                    var username = upUP.nome.Split(' ');
+
+                    Utilizador user = new Utilizador();
+                    user.nome = upUP.nome;
+                    user.nomeUtilizador = username[0].ToLower() + "." + username[username.Length - 1].ToLower();
+                    user.papelFK = 3;
+                    db.Utilizadors.Add(user);
+                    idAlt++;
+
+
+                }
+            }
+            db.SaveChanges();
+
+            for (int i = idAlt - 1; i >= 0; i--)
+            {
+                ids.Add(db.Utilizadors.ToList().Last().Utilizador_id - i);
+            }
+
+
+            foreach (var upUP in db.Alunoes)
+            {
+
+                if (upUP.utilizadorFK == null)
+                {
+                    upUP.utilizadorFK = ids.ElementAt(0);
+                    db.Entry(upUP).State = System.Data.Entity.EntityState.Modified;
+                    ids.RemoveAt(0);
+                }
+            }
+            db.SaveChanges();
+
+            dbT.Commit();
+            return RedirectToAction("CriarAluno");
+        }
+
     }
 }

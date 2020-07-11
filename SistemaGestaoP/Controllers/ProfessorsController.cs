@@ -145,10 +145,24 @@ namespace SistemaGestaoP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CriarProfessor([Bind(Include = "Professor_id,nome,bi,utilizadorFK")] Professor professor)
         {
+            var dbT = db.Database.BeginTransaction();
             if (ModelState.IsValid)
             {
                 db.Professors.Add(professor);
                 db.SaveChanges();
+                var username = professor.nome.Split(' ');
+
+                Utilizador user = new Utilizador();
+                user.nome = professor.nome;
+                user.nomeUtilizador = username[0].ToLower() + "." + username[username.Length - 1].ToLower();
+                user.papelFK = 2;
+                db.Utilizadors.Add(user);
+                db.SaveChanges();
+
+                professor.utilizadorFK = user.Utilizador_id;
+                db.Entry(professor).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                dbT.Commit();
                 return RedirectToAction("Index");
             }
 
@@ -173,6 +187,7 @@ namespace SistemaGestaoP.Controllers
                         Utilizador user = new Utilizador();
                         user.nome = upUP.nome;
                         user.nomeUtilizador = username[0].ToLower() + "." + username[username.Length - 1].ToLower();
+                        user.papelFK = 2;
                         db.Utilizadors.Add(user);
                         idAlt++;
 

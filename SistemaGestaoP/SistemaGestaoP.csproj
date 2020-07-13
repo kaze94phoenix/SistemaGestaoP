@@ -744,6 +744,8 @@
     <Content Include="Views\Avaliacaos\gerarPauta.cshtml" />
     <Content Include="Views\Professors\CriarProfessor.cshtml" />
     <Content Include="Views\Alunoes\CriarAluno.cshtml" />
+    <Content Include="Views\Utilizadors\Login.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

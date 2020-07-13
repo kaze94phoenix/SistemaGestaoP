@@ -136,5 +136,11 @@ namespace SistemaGestaoP.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult Login(Utilizador utilizador)
+        {
+            return View();
+        }
     }
 }

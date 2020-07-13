@@ -11,7 +11,8 @@ namespace SistemaGestaoP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Utilizador
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +21,13 @@ namespace SistemaGestaoP.Models
             this.Alunoes = new HashSet<Aluno>();
             this.Professors = new HashSet<Professor>();
         }
-    
+
         public int Utilizador_id { get; set; }
         public string nome { get; set; }
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage ="Nao inseriste sua senha")]
         public string palavra_passe { get; set; }
+        [Required(ErrorMessage = "Nao inseriste seu nome de utilizador")]
         public string nomeUtilizador { get; set; }
         public Nullable<int> enderecoFK { get; set; }
         public Nullable<int> generoFK { get; set; }

@@ -22,19 +22,21 @@
             <div class="card-body p-5">
 
                 <h4 class="text-dark mb-5">Sign In</h4>
-              @using (Html.BeginForm())
+              @using (Html.BeginForm("Login","Utilizadors", FormMethod.Post))
               {
                   <form action="/index.html">
 
                     <div class="row">
                         <div class="form-group col-md-12 mb-4">
-                            @Html.EditorFor(model => model.nomeUtilizador, new { htmlAttributes = new { @type = "email", @class = "form-control input-lg", @id = "email",  @placeholder = "Username" } })
+                            @Html.EditorFor(model => model.nomeUtilizador, new { htmlAttributes = new { @type = "username", @class = "form-control input-lg",  @placeholder = "Username" } })
                             @Html.ValidationMessageFor(model => model.nomeUtilizador, "", new { @class = "text-danger" })
                             @*<input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Username">*@
                         </div>
                         <div class="form-group col-md-12 ">
-                            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @type = "password", @class="form-control input-lg", @id="password", @placeholder="Password" } })
-                            @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.palavra_passe, new { htmlAttributes = new { @type = "password", @class="form-control input-lg", @id="password", @placeholder="Password" } })
+                            @Html.ValidationMessageFor(model => model.palavra_passe, "", new { @class = "text-danger" })
+
+                            @Html.DisplayFor(model => model.ErroLogin, "", new { @class = "text-danger" })
                             @*<input type="password" class="form-control input-lg" id="password" placeholder="Password">*@
                         </div>
                         <div class="col-md-12">

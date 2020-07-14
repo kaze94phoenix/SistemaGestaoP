@@ -41,5 +41,7 @@ namespace SistemaGestaoP.Models
         public virtual Papel Papel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professor> Professors { get; set; }
+
+        public string ErroLogin { get; set; }
     }
 }

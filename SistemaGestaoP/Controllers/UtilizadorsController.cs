@@ -138,9 +138,33 @@ namespace SistemaGestaoP.Controllers
         }
 
 
-        public ActionResult Login(Utilizador utilizador)
+
+        public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Utilizador utilizador)
+        {
+            var user = db.Utilizadors.Where(x => x.nomeUtilizador == utilizador.nomeUtilizador && x.palavra_passe == utilizador.palavra_passe).FirstOrDefault();
+            if (user == null)
+            {
+                utilizador.ErroLogin = "Nome de utilizador e/ou senha incorrectos";
+                return View("Login",utilizador);
+            }else
+            {
+                Session["id"] = user.Utilizador_id;
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Utilizadors");
         }
     }
 }

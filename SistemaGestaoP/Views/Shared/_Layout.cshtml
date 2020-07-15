@@ -1072,7 +1072,7 @@
 
             <div class="content-wrapper">
                 <section class="content">
-                    @{ 
+               @*     @{ 
                         if (Session["id"] == null)
                         {
                             Response.Redirect("~/Utilizadors/Login");
@@ -1082,7 +1082,8 @@
 
                     @RenderBody()
                             }
-                        }
+                        }*@
+                    @RenderBody()
                 </section>
 
 

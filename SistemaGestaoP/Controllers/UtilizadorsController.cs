@@ -151,7 +151,7 @@ namespace SistemaGestaoP.Controllers
             if (user == null)
             {
                 utilizador.ErroLogin = "Nome de utilizador e/ou senha incorrectos";
-                return View("Login",utilizador);
+                return View(utilizador);
             }else
             {
                 Session["id"] = user.Utilizador_id;
@@ -166,5 +166,68 @@ namespace SistemaGestaoP.Controllers
             Session.Abandon();
             return RedirectToAction("Login", "Utilizadors");
         }
+
+        public ActionResult FindUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FindUser(Utilizador utilizador)
+        {
+            var user = db.Utilizadors.Where(x => x.nomeUtilizador == utilizador.nomeUtilizador).FirstOrDefault();
+            if (user == null)
+            {
+                utilizador.ErroLogin = "Este usuario nao esta registrado";
+                return View(utilizador);
+            }
+            else if(user.palavra_passe!=null)
+            {
+                utilizador.ErroLogin = "Este usuario ja tem senha, contacte o adm";
+                return View(utilizador);
+            }
+            else
+            {
+                return Redirect("~/Utilizadors/Register/" + user.Utilizador_id);
+            }
+            return View();
+        }
+
+
+        public ActionResult Register(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Utilizador utilizador = db.Utilizadors.Find(id);
+            if (utilizador == null)
+            {
+                return HttpNotFound();
+            }
+            return View(utilizador);
+        }
+
+        [HttpPost]
+        public ActionResult Register(Utilizador utilizador)
+        {
+            if (utilizador.confirmaSenha != utilizador.palavra_passe)
+            {
+                utilizador.ErroPasswordMatch = "As senhas nao sao as mesmas";
+                return View(utilizador);
+            }
+           else //if (ModelState.IsValid)
+            {
+                db.Entry(utilizador).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+
+            return View(utilizador);
+        }
+
+
+
+
     }
 }
